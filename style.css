@@ -1,6 +1,4 @@
-/* ============================= */
-/*      GLOBAL COLOR SYSTEM      */
-/* ============================= */
+/* Zentrale CSS-Variablen für Farben, Abstände und Layout (Design-System der Website) */
 
 :root{
   --bg:#FFF7F2;
@@ -31,14 +29,17 @@ html{
 /*           GLOBAL BASE         */
 /* ============================= */
 
+/* einheitliches Box-Modell*/
 *{
   box-sizing:border-box;
 }
 
+/* standard Cursor */
 html, body{
   cursor: default;
 }
 
+/* Schrift & Seiten-Grundlayout */ 
 input,
 textarea{
   cursor:text;
@@ -66,29 +67,30 @@ body.light header.scrolled-glass {
 /*       TYPOGRAPHY SYSTEM       */
 /* ============================= */
 
+/* Standardschrift für normalen Text */
 body {
   font-family: 'DM Sans', sans-serif;
 }
 
+/* Schriftart für Überschriften */
 h1, h2, h3, h4, h5 {
   font-family: 'Rubik', sans-serif;
 }
 
+/* Verspielte Schrift für Motto / Akzenttexte */
 .motto {
   font-family: 'Pacifico', cursive;
 }
 
-
-/* HEADER benutzt Poppins */
+/* Eigene Schrift nur für Logo/Name im Header 
+   HEADER benutzt Poppins */
 .brand.personal .name,
 .brand.personal .name-text,
 .brand.personal .big-g {
   font-family: 'Poppins', sans-serif !important;
 }
 
-.brand.personal {
-  margin-left: 40px;   /* vorher 0 → Logo rückt 40px nach rechts */
-}
+
 
 
 /* ============================= */
@@ -96,14 +98,14 @@ h1, h2, h3, h4, h5 {
 /* ============================= */
 
 .container{
-  width:min(1100px,96vw);
-  margin:auto;
-  padding-left:clamp(28px,6vw,80px);
-  padding-right:clamp(28px,6vw,80px);
+  width:min(1100px,96vw); /* Maximale Breite, aber responsive auf kleinen Screens */
+  margin:auto;            /* Zentriert den Inhalt horizontal */
+  padding-left:clamp(28px,6vw,80px);  /* Dynamischer Innenabstand links */
+  padding-right:clamp(28px,6vw,80px); /* Dynamischer Innenabstand rechts */
 }
 
 main.container {
-  padding-top: -10px; /* vorher effektiv viel mehr */
+  padding-top: -10px; /* Korrigiert den Abstand nach oben (zieht Inhalt näher an den Header) */
 }
 
 /* ============================= */
@@ -111,330 +113,317 @@ main.container {
 /* ============================= */
 
 /* Grundzustand (oben, nicht gescrollt) */
-header {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  height: var(--header-height);
-  z-index: 1000;
+.site-header {
+  position: sticky;                /* Header bleibt beim Scrollen oben kleben */
+  top: 0;                          /* Startet ganz oben */
+  width: 100%;                     /* Volle Breite */
+  height: var(--header-height);    /* Feste Header-Höhe aus Variable */
+  z-index: 1000;                   /* Liegt über dem restlichen Inhalt */
 
-  /* Start: komplett ruhig */
-  background: transparent;
-  backdrop-filter: blur(0px);
-  -webkit-backdrop-filter: blur(0px);
-
-  border-bottom: 1px solid transparent;
-  box-shadow: none;
-
-  transition:
+  background: transparent;         /* Anfangs kein Hintergrund */
+  backdrop-filter: blur(0px);      /* Kein Blur im Startzustand */
+  transition:                      /* Sanfte Übergänge beim Scrollen */
     background 0.3s ease,
     backdrop-filter 0.3s ease,
-    -webkit-backdrop-filter 0.3s ease,
     box-shadow 0.35s ease,
     border-color 0.3s ease;
 }
 
 /* Scroll-Zustand (Glass-Effekt) */
-header.scrolled-glass {
-  background: color-mix(in oklab, var(--bg) 50%, transparent);
-
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-
-  border-bottom: 1px solid
-    color-mix(in oklab, var(--accent-2) 35%, transparent);
-
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+.site-header.scrolled-glass {
+  background: color-mix(in oklab, var(--bg) 50%, transparent); /* Halbtransparenter Hintergrund */
+  backdrop-filter: blur(18px);                                 /* Glas-/Blur-Effekt */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);                /* Leichter Schatten beim Scrollen */
 }
+
+
 
 /* ============================= */
 /*              NAV              */
 /* ============================= */
 
 .nav {
-  position: relative;
-  height: var(--header-height);
+  position: relative;              /* Bezugspunkt für absolut positionierte Elemente */
+  height: var(--header-height);    /* Gleiche Höhe wie der Header */
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 0 40px;
+  display: flex;                   /* Flexbox für Layout UND flex wird benutzt, damit Logo und Navigation automatisch nebeneinander stehen und vertikal sauber zentriert sind */
+  align-items: center;             /* Vertikal zentrieren */
+  justify-content: space-between;  /* Logo links, Navigation rechts */
+  padding: 0 40px;                 /* Innenabstand links und rechts */
 }
-
-
 
 html.dark header.scrolled-glass {
-  background: rgba(28, 16, 22, 0.72);
+  background: rgba(28, 16, 22, 0.72); /* Dunkler, halbtransparenter Header im Dark Mode */
 }
-
-
 
 /* ORIGINAL LOGO (wie vorher) */
 
 /* ============================= */
 /*     ORIGINAL HEADER LOGO      */
-/*        (Jetzt BOLDER)         */
 /* ============================= */
 
 .brand.personal {
-  display: flex;
-  align-items: center;
-  gap: .6rem;
-  text-decoration: none;
-  color: var(--text);
+  display: flex;                 /* Ordnet Logo-Elemente nebeneinander an */
+  align-items: center;           /* Zentriert alles vertikal */
+  gap: .6rem;                    /* Abstand zwischen Logo-Teilen */
+  text-decoration: none;         /* Entfernt Unterstreichung vom Link */
+  color: var(--text);            /* Standard-Textfarbe */
 }
 
 /* Wrapper */
 .brand.personal .name {
-  display: flex;
-  align-items: flex-start;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  line-height: 1;
+  display: flex;                 /* Ordnet Buchstabe und Text als Einheit */
+  align-items: flex-start;       /* Text startet leicht oben ausgerichtet */
+  font-family: 'Poppins', sans-serif; /* Schriftart für den Namen */
+  font-weight: 700;              /* Fetter Text */
+  line-height: 1;                /* Kompakte Zeilenhöhe */
 }
 
 /* Großes rosa G */
 .brand.personal .big-g {
-  font-size: 2.35rem;     /* leicht größer */
-  font-weight: 800;       /* BOLDER */
-  color: var(--accent);
-  line-height: 1;
-  margin-right: 2px;
+  font-size: 2.35rem;            /* Größerer Anfangsbuchstabe */
+  font-weight: 800;              /* Extra fett für Betonung */
+  color: var(--accent);          /* Akzentfarbe */
+  line-height: 1;                /* Keine zusätzliche Höhe */
+  margin-right: 2px;             /* Kleiner Abstand zum Namen */
 }
 
 /* Name rechts */
 .brand.personal .name-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 1px;
+  display: flex;                 /* Ordnet Vor- und Nachnamen untereinander */
+  flex-direction: column;        /* Spaltenlayout (oben/unten) */
+  justify-content: center;       /* Vertikal zentriert neben dem G */
+  margin-top: 1px;               /* Feine optische Ausrichtung */
 }
 
 /* Gizem – bold */
 .brand.personal .name-text .first {
-  font-size: 1.05rem;
-  font-weight: 800;        /* Bolder */
-  color: var(--text);
-  letter-spacing: 0.3px;
-  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;            /* Schriftgröße für Vornamen */
+  font-weight: 800;              /* Sehr fett für Betonung */
+  color: var(--text);            /* Haupttextfarbe */
+  letter-spacing: 0.3px;         /* Leichter Buchstabenabstand */
+  font-family: 'Poppins', sans-serif; /* Gleiche Schrift wie Logo */
 }
 
 /* Güney – etwas softer */
 .brand.personal .name-text .last {
-  font-size: 1.05rem;
-  font-weight: 700;        /* Slightly less bold */
-  letter-spacing: 0.3px;
-  color: var(--muted);
-  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;            /* Gleiche Größe wie Vorname */
+  font-weight: 700;              /* Etwas weniger fett */
+  letter-spacing: 0.3px;         /* Einheitlicher Abstand */
+  color: var(--muted);           /* Gedämpfte Farbe für Nachnamen */
+  font-family: 'Poppins', sans-serif; /* Einheitliche Schrift */
 }
-
 
 /* NAVIGATION */
 .nav-right {
-  display: flex;
-  gap: 18px;
-  margin-right: 40px;  /* vorher 0 → Nav rückt 40px nach links */
+  display: flex;                /* Ordnet Navigationslinks nebeneinander an */
+  gap: 18px;                    /* Abstand zwischen den Links */
 }
 
-
 .nav-right a {
-  text-decoration: none;
-  font-family: "DM Sans", sans-serif;
-  color: var(--muted);
-  padding: 8px 14px;
-  border-radius: 12px;
-  font-size: 0.95rem;
-  font-weight: 600;
+  text-decoration: none;        /* Entfernt Unterstreichung */
+  font-family: "DM Sans", sans-serif; /* Schrift für Navigation */
+  color: var(--muted);          /* Dezente Standardfarbe */
+  padding: 8px 14px;            /* Klickfläche vergrößern */
+  border-radius: 12px;          /* Abgerundete Ecken */
+  font-size: 0.95rem;           /* Etwas kleinere Schrift */
+  font-weight: 600;             /* Gut lesbar, leicht fett */
 
-  border: 2px solid transparent;
-  transition: all 0.25s ease;
+  border: 2px solid transparent;/* Platz für Hover-Rahmen ohne Springen */
+  transition: all 0.25s ease;   /* Sanfte Hover-Animation */
 }
 
 .nav-right a:hover {
-  background: var(--card);
-  border-color: var(--outline);
-  color: var(--text);
-  box-shadow: 0 6px 14px rgba(143,121,111,0.18);
+  background: var(--card);      /* Kartenfarbe beim Hover */
+  border-color: var(--outline); /* Rahmen sichtbar machen */
+  color: var(--text);           /* Text dunkler für Kontrast */
+  box-shadow: 0 6px 14px rgba(143,121,111,0.18); /* Leichter Hover-Schatten */
 }
+
 
 /* ============================= */
 /*              HERO             */
 /* ============================= */
-
 .hero{
-  display:grid;
-  grid-template-columns:1.2fr .8fr;
-  align-items:center;
-  gap:clamp(1rem,4vw,3rem);
-  padding:80px 0 60px;
+  display: grid;                            /* Grid-Layout für Text & Bild */
+  grid-template-columns: 1.2fr .8fr;        /* Text breiter als Bild */
+  align-items: center;                     /* Vertikal zentriert */
+  gap: clamp(1rem, 4vw, 3rem);              /* Responsiver Abstand */
+  padding: 80px 0 60px;                     /* Abstand oben und unten */
 }
 
 .accent-name {
-  font-family: 'Pacifico', cursive !important;
-  font-size: clamp(48px, 9vw, 92px);
+  font-family: 'Pacifico', cursive !important; /* Handschriftlicher Akzentname */
+  font-size: clamp(48px, 9vw, 92px);           /* Responsive Schriftgröße */
   margin: 0;
-  margin-left: -40px;
-  color: var(--accent);
-  letter-spacing: 0.5px;
-  font-weight: 400;
-  text-shadow: 0 3px 8px rgba(230, 122, 142, 0.15);
+  margin-left: -40px;                          /* Optisches Herausziehen nach links */
+  color: var(--accent);                        /* Akzentfarbe */
+  letter-spacing: 0.5px;                       /* Leichter Buchstabenabstand */
+  font-weight: 400;                            /* Leichte Schrift */
+  text-shadow: 0 3px 8px rgba(230, 122, 142, 0.15); /* Sanfter Glow */
 }
 
 .motto{
-  font-size:1.15rem;
-  margin:10px 0 24px;
-  color:color-mix(in oklab,var(--accent) 70%, #443);
+  font-size: 1.15rem;                          /* Etwas größerer Fließtext */
+  margin: 10px 0 24px;                         /* Abstand oben und unten */
+  color: color-mix(in oklab, var(--accent) 70%, #443); /* Weiche Akzentfarbe */
 }
 
 .hero p{
-  max-width:60ch;
-  color:var(--muted);
+  max-width: 60ch;                             /* Optimale Lesebreite */
+  color: var(--muted);                         /* Gedämpfte Textfarbe */
 }
 
 .cta{
-  display:flex;
-  gap:1rem;
-  flex-wrap:wrap;
+  display: flex;                              /* Buttons nebeneinander */
+  gap: 1rem;                                  /* Abstand zwischen Buttons */
+  flex-wrap: wrap;                            /* Umbruch bei kleinen Screens */
 }
 
 /* BUTTONS */
 .btn{
-  display:inline-block;
-  padding:12px 20px;
-  border-radius:14px;
-  background:var(--card);
-  border:2px solid var(--outline);
-  text-decoration:none;
-  color:var(--text);
-  font-weight:600;
-  transition:all .25s ease;
+  display: inline-block;          /* Button verhält sich wie Inline-Element mit Größe */
+  padding: 12px 20px;             /* Innenabstand für gute Klickfläche */
+  border-radius: 14px;            /* Abgerundete Ecken */
+  background: var(--card);        /* Standard-Hintergrund */
+  border: 2px solid var(--outline); /* Rahmen passend zum Design */
+  text-decoration: none;          /* Entfernt Unterstreichung bei Links */
+  color: var(--text);             /* Textfarbe */
+  font-weight: 600;               /* Gut lesbar, leicht fett */
+  transition: all .25s ease;      /* Sanfte Hover-Animation */
+}
+
+.btn.tertiary {
+  background: transparent;        /* Transparenter Hintergrund */
+  border: 2px dashed var(--outline); /* Gestrichelter Rahmen */
+  color: var(--muted);            /* Dezente Textfarbe */
+}
+
+.btn.tertiary:hover {
+  color: var(--text);             /* Text wird stärker sichtbar */
+  border-style: solid;            /* Rahmen wird durchgezogen */
 }
 
 .btn.primary{
-  background:var(--accent);
-  border:2px solid var(--outline);
-  color:#fff;
+  background: var(--accent);      /* Akzentfarbe für Haupt-Button */
+  border: 2px solid var(--outline); /* Rahmen bleibt gleich */
+  color: #fff;                    /* Weißer Text für Kontrast */
 }
 
 .btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 10px 26px rgba(143,121,111,0.22);
+  transform: translateY(-3px);    /* Leichter Schwebe-Effekt */
+  box-shadow: 0 10px 26px rgba(143,121,111,0.22); /* Schatten beim Hover */
 }
+
 
 /* ============================= */
 /*             HERO              */
 /* ============================= */
 
 .hero-section {
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
+  min-height: 90vh;            /* Hero füllt fast den ganzen Viewport */
+  display: flex;               /* Ermöglicht vertikale Zentrierung */
+  align-items: center;         /* Inhalt vertikal zentrieren */
 }
 
 .hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 320px; /* Text links | Bild rechts */
-  gap: clamp(48px, 8vw, 120px);
-  align-items: center;
+  display: grid;               /* Grid für Text links, Bild rechts */
+  grid-template-columns: 1fr 320px; /* Text flexibel | Bild feste Breite */
+  gap: clamp(48px, 8vw, 120px);/* Großer, responsiver Abstand */
+  align-items: center;         /* Inhalte vertikal ausrichten */
 }
 
 .hero-content {
-  order: 1; /* Text links */
+  order: 1;                    /* Text bleibt links */
 }
 
 .hero-image {
-  order: 2; /* Bild rechts */
-  margin-top: 32px;     /* 👈 weiter nach unten */
-  margin-left: -40px;
+  order: 2;                    /* Bild bleibt rechts */
+  margin-top: 32px;            /* Bild etwas tiefer setzen */
+  margin-left: -40px;          /* Bild leicht nach links ziehen */
 }
 
-
-
-
 .hero-eyebrow {
-  font-size: 32px;          /* wie vorher, ruhig */
-  font-weight: 600;
-  color: var(--accent);
-  display: inline-block;
-  position: relative;
-  margin-bottom: 18px;
-  z-index: 1;               /* 👈 WICHTIG */
+  font-size: 32px;             /* Eyebrow-Text über der Headline */
+  font-weight: 600;            /* Halb-fett */
+  color: var(--accent);        /* Akzentfarbe */
+  display: inline-block;       /* Breite nur so groß wie Text */
+  position: relative;          /* Bezugspunkt für ::after */
+  margin-bottom: 18px;         /* Abstand nach unten */
+  z-index: 1;                  /* Text über dem Highlight */
 }
 
 .hero-eyebrow::after {
-  content: "";
-  position: absolute;
-  left: 4px;
-  bottom: 12px;
-  width: calc(100% + 12px);
-  height: 15px;
-  background: var(--name);
-  opacity: 0.35;            /* 👈 sichtbar, aber weich */
-  border-radius: 2px;
-  z-index: -1;
+  content: "";                 /* Dekoratives Highlight */
+  position: absolute;          /* Position relativ zum Text */
+  left: 4px;                   /* Leicht nach rechts versetzt */
+  bottom: 12px;                /* Unter dem Text */
+  width: calc(100% + 12px);    /* Etwas breiter als Text */
+  height: 15px;                /* Höhe des Highlights */
+  background: var(--name);     /* Marker-Farbe */
+  opacity: 0.35;               /* Weich & dezent */
+  border-radius: 2px;          /* Leicht abgerundet */
+  z-index: -1;                 /* Hinter dem Text */
 }
 
 /* Fließtext */
 .hero-text {
-  font-size: clamp(1.15rem, 2.2vw, 1.35rem);
-  line-height: 1.7;
-  color: var(--text);
-  margin-bottom: 36px;
+  font-size: clamp(1.15rem, 2.2vw, 1.35rem); /* Responsive Textgröße */
+  line-height: 1.7;           /* Gute Lesbarkeit */
+  color: var(--text);         /* Haupttextfarbe */
+  margin-bottom: 36px;        /* Abstand zu Buttons */
 }
 
 /* Buttons */
 .hero-actions {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
+  display: flex;              /* Buttons nebeneinander */
+  gap: 16px;                  /* Abstand zwischen Buttons */
+  flex-wrap: wrap;            /* Umbruch auf kleinen Screens */
 }
 
 /* BILD RECHTS – ruhig & klein */
 .hero-image img {
-  width: 100%;
-  max-width: 360px;   /* 👈 größer */
-  aspect-ratio: 1 / 1.1;
-  object-fit: cover;
-  border-radius: 24px;
-  opacity: 0.95;
+  width: 100%;                /* Bild passt sich Container an */
+  max-width: 360px;           /* Maximale Bildgröße */
+  aspect-ratio: 1 / 1.1;      /* Kontrolliertes Seitenverhältnis */
+  object-fit: cover;          /* Bild füllt den Bereich */
+  border-radius: 24px;        /* Abgerundete Ecken */
+  opacity: 0.95;              /* Leicht weicher Look */
 }
 
-  .hero-image {
-    order: 2;
-  }
+.hero-image {
+  order: 2;                   /* Sicherheit: Bild rechts */
+}
 
-  .hero-image img {
-    margin-bottom: 32px;
-  }
-
+.hero-image img {
+  margin-bottom: 32px;        /* Abstand nach unten (mobil/optisch) */
+}
 
 /* ============================= */
 /*          SCROLL-TO-TOP        */
 /* ============================= */
-
 .scroll-top-btn {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
+  position: fixed;                 /* Button bleibt fest im Viewport */
+  bottom: 30px;                    /* Abstand vom unteren Rand */
+  right: 30px;                     /* Abstand vom rechten Rand */
 
-  width: 38px;
-  height: 38px;
+  width: 38px;                     /* Feste Breite */
+  height: 38px;                    /* Feste Höhe */
 
-  border-radius: 50%;
-  background: var(--card);          /* gleiche Farbe wie Panels/Cards */
-  border: 2px solid var(--outline); /* exakt wie bei Buttons, Tags, Cards */
+  border-radius: 50%;              /* Kreisförmiger Button */
+  background: var(--card);         /* Gleiche Farbe wie Cards */
+  border: 2px solid var(--outline);/* Einheitlicher Rahmen */
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex;                   /* Zentriert Pfeil im Button */
+  align-items: center;             /* Vertikal zentrieren */
+  justify-content: center;         /* Horizontal zentrieren */
 
-  box-shadow: var(--shadow);        /* weicher warmer Shadow */
-  opacity: 0;
-  pointer-events: none;
+  box-shadow: var(--shadow);       /* Weicher Schatten */
+  opacity: 0;                      /* Standardmäßig unsichtbar */
+  pointer-events: none;            /* Nicht klickbar im versteckten Zustand */
 
-  cursor: pointer;
-  transition:
+  cursor: pointer;                 /* Zeigt Klickbarkeit */
+  transition:                      /* Sanfte Ein-/Ausblendung & Hover */
     opacity .3s ease,
     transform .3s ease,
     background .3s ease,
@@ -444,28 +433,27 @@ html.dark header.scrolled-glass {
 
 /* sichtbar */
 .scroll-top-btn.show {
-  opacity: 1;
-  pointer-events: all;
+  opacity: 1;                      /* Button einblenden */
+  pointer-events: all;             /* Klickbar machen */
 }
 
 /* Minimaler Pfeil – kleiner, elegant */
 .arrow-up {
-  width: 10px;
+  width: 10px;                     /* Größe des Pfeils */
   height: 10px;
 
-  border-left: 2.2px solid var(--text);
-  border-bottom: 2.2px solid var(--text);
+  border-left: 2.2px solid var(--text);   /* Linke Pfeillinie */
+  border-bottom: 2.2px solid var(--text); /* Untere Pfeillinie */
 
-  transform: rotate(135deg);
-  margin-top: 1px;   /* 👈 optisches Zentrieren */
+  transform: rotate(135deg);       /* Dreht Linien zu Pfeil nach oben */
+  margin-top: 1px;                 /* Optische Zentrierung */
 }
-
 
 /* Lightmode Hover */
 html:not(.dark) .scroll-top-btn:hover {
-  background: color-mix(in oklab, var(--card) 80%, var(--accent) 10%);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(143,121,111,0.25);
+  background: color-mix(in oklab, var(--card) 80%, var(--accent) 10%); /* Leichter Akzent */
+  transform: translateY(-4px);     /* Schwebe-Effekt */
+  box-shadow: 0 12px 32px rgba(143,121,111,0.25); /* Stärkerer Schatten */
 }
 
 /* ============================= */
@@ -474,112 +462,105 @@ html:not(.dark) .scroll-top-btn:hover {
 
 /* leicht hellere berry Kugel, damit sie sich abhebt */
 html.dark .scroll-top-btn {
-  background: #34202c;
-  border: 2px solid var(--outline);
-  box-shadow: 0 12px 26px rgba(0,0,0,0.6);
+  background: #34202c;            /* Dunkler, aber gut sichtbarer Button im Dark Mode */
+  border: 2px solid var(--outline); /* Einheitlicher Rahmen */
+  box-shadow: 0 12px 26px rgba(0,0,0,0.6); /* Stärkerer Schatten für Tiefe */
 }
 
 /* weißer Pfeil im Darkmode */
 html.dark .arrow-up {
-  border-left-color: #fff;
-  border-bottom-color: #fff;
+  border-left-color: #fff;        /* Pfeil links weiß */
+  border-bottom-color: #fff;     /* Pfeil unten weiß */
 }
 
 /* Darkmode Hover – etwas heller */
 html.dark .scroll-top-btn:hover {
-  background: #4a2b3c;
-  transform: translateY(-4px);
-  box-shadow: 0 14px 32px rgba(0,0,0,0.7);
+  background: #4a2b3c;            /* Hellerer Berry-Ton beim Hover */
+  transform: translateY(-4px);    /* Schwebe-Effekt */
+  box-shadow: 0 14px 32px rgba(0,0,0,0.7); /* Mehr Tiefe beim Hover */
 }
-
 
 /* ============================= */
 /*         SECTION HEAD          */
 /* ============================= */
 
 section{
-  padding-top:100px;
-  padding-bottom:80px;
+  padding-top: 100px;        /* Abstand nach oben für klare Trennung der Sections */
+  padding-bottom: 80px;      /* Abstand nach unten für Luft zwischen Inhalten */
 }
 
 .section-head h2{
-  font-size:clamp(28px,4vw,38px);
-  font-weight:800;
-  color:var(--text);
-  margin-bottom:1rem;
+  font-size: clamp(28px, 4vw, 38px); /* Responsive Überschriftengröße */
+  font-weight: 800;                  /* Sehr fett für klare Hierarchie */
+  color: var(--text);                /* Haupttextfarbe */
+  margin-bottom: 1rem;               /* Abstand unter der Überschrift */
 }
 
 /* ============================= */
 /*           ABOUT ME            */
 /* ============================= */
 
-
 .about-inner {
-  max-width: 720px;
+  max-width: 720px;              /* Begrenzt Textbreite für gute Lesbarkeit */
 }
 
 .about-inner h2 {
-  font-size: clamp(32px, 4vw, 40px);
-  margin-bottom: 4px;
+  font-size: clamp(32px, 4vw, 40px); /* Responsive Überschrift */
+  margin-bottom: 4px;               /* Kleiner Abstand zur Akzentlinie */
 }
 
 /* Akzentlinie */
 .about-divider {
-  width: 64px;
-  height: 4px;
-  background: var(--accent);
-  border-radius: 2px;
-  margin: 8px 0 28px;
+  width: 64px;                   /* Kurze Linie als visuelles Highlight */
+  height: 4px;                   /* Linienhöhe */
+  background: var(--accent);     /* Akzentfarbe */
+  border-radius: 2px;            /* Leicht abgerundete Kanten */
+  margin: 8px 0 28px;            /* Abstand oben und unten */
 }
 
 .about-lead {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 22px;
-  line-height: 1.7;
+  font-size: 1.1rem;             /* Etwas größerer Einleitungstext */
+  font-weight: 500;              /* Mittelstark */
+  color: var(--text);            /* Haupttextfarbe */
+  margin-bottom: 22px;           /* Abstand nach unten */
+  line-height: 1.7;              /* Angenehme Zeilenhöhe */
 }
 
 .about-inner p {
-  color: var(--muted);
-  line-height: 1.7;
-  margin-bottom: 18px;
+  color: var(--muted);           /* Gedämpfte Textfarbe */
+  line-height: 1.7;              /* Gute Lesbarkeit */
+  margin-bottom: 18px;           /* Abstand zwischen Absätzen */
 }
 
 /* handschriftlicher Akzent */
 .about-hand {
-  font-family: 'Caveat', cursive;
-  color: var(--accent);
-  font-size: 1.28em;
-  white-space: nowrap;
+  font-family: 'Caveat', cursive; /* Handschrift-Stil für Akzente */
+  color: var(--accent);           /* Akzentfarbe */
+  font-size: 1.28em;              /* Etwas größer als normaler Text */
+  white-space: nowrap;            /* Kein Zeilenumbruch */
 }
-
 
 /* ============================= */
 /*       PROJECTS – GRID         */
 /* ============================= */
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:34px;
+  display: grid;                         /* Grid-Layout für Projektkarten */
+  grid-template-columns: repeat(3, 1fr); /* Drei gleich breite Spalten */
+  gap: 34px;                             /* Abstand zwischen Karten */
 }
 
-/* ============================= */
-/*        PROJECT CARD           */
-/* ============================= */
-
 .card {
-  position: relative;
-  background: var(--card);
-  border: 2px solid var(--outline);
-  border-radius: 18px;
-  padding: 20px;
-  box-shadow: 0 12px 26px rgba(143,121,111,0.18);
+  position: relative;                   /* Bezugspunkt für Badge etc. */
+  background: var(--card);              /* Karten-Hintergrund */
+  border: 2px solid var(--outline);      /* Einheitlicher Rahmen */
+  border-radius: 18px;                  /* Abgerundete Ecken */
+  padding: 20px;                        /* Innenabstand */
+  box-shadow: 0 12px 26px rgba(143,121,111,0.18); /* Weicher Schatten */
 
-  opacity: 0;
-  transform: translateY(12px);
-  transition:
+  opacity: 0;                           /* Start: unsichtbar */
+  transform: translateY(12px);          /* Start: leicht nach unten */
+  transition:                           /* Sanfte Einblend-Animation */
     opacity .35s ease,
     transform .35s ease,
     box-shadow .35s ease,
@@ -587,44 +568,43 @@ section{
 }
 
 .card.in-view {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1;                           /* Sichtbar */
+  transform: translateY(0);             /* In Originalposition */
 }
 
 .tag-list {
-  margin-top: 8px;
-  gap: 6px;
+  margin-top: 8px;                      /* Abstand nach oben */
+  gap: 6px;                             /* Abstand zwischen Tags */
 }
 
 .card-actions {
-  margin-top: 14px;
+  margin-top: 14px;                     /* Abstand zu Inhalt */
 }
 
 .card-actions .btn {
-  padding: 9px 16px;
-  font-size: 0.85rem;
+  padding: 9px 16px;                    /* Kleinere Buttons in Cards */
+  font-size: 0.85rem;                   /* Kleinere Schrift */
 }
-
 
 /* ============================= */
 /*       LIGHTMODE HOVER         */
 /* ============================= */
 
 html:not(.dark) .card:hover {
-  transform: translateY(-6px) scale(1.015);
-  border-color: var(--accent);
+  transform: translateY(-6px) scale(1.015); /* Karte hebt sich leicht an */
+  border-color: var(--accent);              /* Akzentfarbener Rahmen */
 
-  /* gleiche Struktur wie DARKMODE (2 shadows), aber in light Farben */
+  /* Zweistufiger Schatten für Tiefe im Light Mode */
   box-shadow:
-    0 18px 32px rgba(143, 121, 111, 0.22),  /* warm shadow */
-    0 10px 20px rgba(0, 0, 0, 0.18);        /* deeper shadow */
+    0 18px 32px rgba(143, 121, 111, 0.22),  /* Warmer, weicher Schatten */
+    0 10px 20px rgba(0, 0, 0, 0.18);        /* Tieferer, neutraler Schatten */
 }
 
 html:not(.dark) .tag:hover {
-  background: #fdf8f8;
-  color: var(--text);
-  border-color: var(--accent);
-  box-shadow: 0 2px 0 rgba(230, 122, 142, 0.18);
+  background: #fdf8f8;                      /* Heller Hintergrund beim Hover */
+  color: var(--text);                       /* Text stärker sichtbar */
+  border-color: var(--accent);              /* Akzentfarbener Rahmen */
+  box-shadow: 0 2px 0 rgba(230, 122, 142, 0.18); /* Dezenter Schatten */
 }
 
 
@@ -632,277 +612,295 @@ html:not(.dark) .tag:hover {
 /* ============================= */
 /*         PROJECT THUMB         */
 /* ============================= */
+
+/* Vorschaubox für Projekte mit festem Seitenverhältnis und zentriertem Inhalt */
 .thumb{
-  aspect-ratio:16/9;
-  background:#FFEFE9;
-  border:2px solid var(--outline);
-  border-radius:14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:700;
-  font-size:0.95rem;
-  color:var(--muted);
-  margin-bottom:0.75rem;
-  box-shadow:0 4px 12px rgba(143,121,111,0.18);
+  aspect-ratio: 16/9;              /* Festes Seitenverhältnis für Vorschaubilder */
+  background: #FFEFE9;             /* Platzhalter-Hintergrund */
+  border: 2px solid var(--outline);/* Einheitlicher Rahmen */
+  border-radius: 14px;             /* Abgerundete Ecken */
+  display: flex;                   /* Zentriert Inhalt im Thumbnail */
+  align-items: center;             /* Vertikal zentrieren */
+  justify-content: center;         /* Horizontal zentrieren */
+  font-weight: 700;                /* Gut lesbarer Text */
+  font-size: 0.95rem;              /* Textgröße im Thumbnail */
+  color: var(--muted);             /* Gedämpfte Textfarbe */
+  margin-bottom: 0.75rem;          /* Abstand nach unten */
+  box-shadow: 0 4px 12px rgba(143,121,111,0.18); /* Leichter Schatten */
 }
+
 
 /* ============================= */
 /*           PROJECT BADGE       */
 /* ============================= */
 
+/* Badge (z.B. Jahr / Status) oben auf der Karte */
 .badge{
-  position:absolute;
-  top:12px;
-  left:12px;
-  background:var(--accent);
-  color:#fff;
-  padding:5px 12px;
-  border-radius:999px;
-  font-size:0.72rem;
-  font-weight:700;
-  border:2px solid var(--outline);
-  box-shadow:0 3px 0 rgba(143,121,111,0.25);
+  position: absolute;              /* Frei über der Karte positioniert */
+  top: 12px;                       /* Abstand von oben */
+  left: 12px;                      /* Abstand von links */
+  background: var(--accent);       /* Akzentfarbe für Aufmerksamkeit */
+  color: #fff;                     /* Weißer Text für Kontrast */
+  padding: 5px 12px;               /* Innenabstand für Pillenform */
+  border-radius: 999px;            /* Vollständig abgerundet (Pill) */
+  font-size: 0.72rem;              /* Kleine, unaufdringliche Schrift */
+  font-weight: 700;                /* Gut lesbar */
+  border: 2px solid var(--outline);/* Einheitlicher Rahmen */
+  box-shadow: 0 3px 0 rgba(143,121,111,0.25); /* Leichte Tiefe */
 }
 
-/* ============================= */
-/*             TAGS              */
-/* ============================= */
-
+/* Container für mehrere Tags */
 .tag-list {
-  margin-top: 8px;
-  margin-bottom: 18px; /* 👈 NEU – Abstand zu Buttons */
-  gap: 6px;
+  margin-top: 8px;                 /* Abstand nach oben */
+  margin-bottom: 18px;             /* Abstand zu Buttons */
+  gap: 6px;                        /* Abstand zwischen Tags */
 }
 
-
+/* Einzelner Tag (Technologie / Kategorie) */
 .tag{
-  font-size:0.72rem;
-  padding:4px 10px;
-  border-radius:999px;
-  border:2px solid var(--outline);
-  background:#FFF7F2;
-  color:var(--text);
-  font-weight:600;
-  box-shadow:0 2px 0 rgba(143,121,111,0.22);
+  font-size: 0.72rem;              /* Kleine Label-Schrift */
+  padding: 4px 10px;               /* Kompakte Pillenform */
+  border-radius: 999px;            /* Rundes Tag-Design */
+  border: 2px solid var(--outline);/* Rahmen passend zum System */
+  background: #FFF7F2;             /* Heller Hintergrund */
+  color: var(--text);              /* Haupttextfarbe */
+  font-weight: 600;                /* Gut lesbar */
+  box-shadow: 0 2px 0 rgba(143,121,111,0.22); /* Dezente Tiefe */
 }
+
 
 /* ============================= */
 /*        CONTACT SECTION        */
 /* ============================= */
-
+/* Grid-Layout für Kontaktbereich (Text links, Formular rechts) */
 .contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(48px, 7vw, 96px);
-  align-items: start;
+  display: grid;                          /* Zweispaltiges Layout */
+  grid-template-columns: 1fr 1fr;         /* Text | Formular */
+  gap: clamp(48px, 7vw, 96px);            /* Großer, responsiver Abstand */
+  align-items: start;                     /* Inhalte oben ausrichten */
 }
 
-/* TEXTBLOCK */
+/* Überschrift im Kontaktbereich */
 .contact-text h2 {
-  font-size: clamp(34px, 4vw, 44px);
-  margin-bottom: 2px; /* fast direkt am Balken */
+  font-size: clamp(34px, 4vw, 44px);      /* Große, responsive Headline */
+  margin-bottom: 2px;                     /* Sehr nah an der Akzentlinie */
 }
 
+/* Akzentlinie unter Überschrift */
 .contact-divider {
-  width: 72px;
-  height: 4px;
-  background: var(--accent);
-  border-radius: 2px;
-  margin: 4px 0 22px; /* 👈 sehr nah am Text */
+  width: 72px;                            /* Kurze Linie */
+  height: 4px;                            /* Linienhöhe */
+  background: var(--accent);              /* Akzentfarbe */
+  border-radius: 2px;                     /* Weiche Kanten */
+  margin: 4px 0 22px;                     /* Abstand oben/unten */
 }
 
-
-
+/* Einleitender Text */
 .contact-lead {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 18px;
+  font-size: 1.1rem;                      /* Etwas größerer Text */
+  font-weight: 600;                       /* Hervorgehoben */
+  margin-bottom: 18px;                    /* Abstand nach unten */
 }
 
+/* Fließtext im Kontaktbereich */
 .contact-text p {
-  max-width: 46ch;
-  color: var(--muted);
-  margin-bottom: 18px;
-  line-height: 1.6;
+  max-width: 46ch;                        /* Gute Lesebreite */
+  color: var(--muted);                    /* Gedämpfte Farbe */
+  margin-bottom: 18px;                    /* Abstand zwischen Absätzen */
+  line-height: 1.6;                       /* Gute Lesbarkeit */
 }
 
+/* Noch softer Text */
 .contact-soft {
-  opacity: 0.9;
+  opacity: 0.9;                           /* Etwas transparenter */
 }
 
-/* HANDWRITTEN NOTE */
+/* Handschriftlicher Akzent */
 .hand {
-  font-family: 'Caveat', cursive;
-  color: var(--accent);
-  font-size: 1.05em;
-  margin-left: 6px;
-  white-space: nowrap;
+  font-family: 'Caveat', cursive;         /* Handschrift-Stil */
+  color: var(--accent);                   /* Akzentfarbe */
+  font-size: 1.05em;                      /* Minimal größer */
+  margin-left: 6px;                       /* Abstand zum Text */
+  white-space: nowrap;                    /* Kein Umbruch */
 }
 
+.hand-inline {
+  margin-left: 1px;                       /* Feiner Abstand */
+}
+
+/* Deko-Illustration */
 .contact-illustration {
-  display: block;
-  margin-top: 24px;
-  width: 270px;        /* 👈 Desktop-Größe */
-  opacity: 0.85;
+  display: block;                         /* Verhindert Inline-Abstände */
+  margin-top: 24px;                      /* Abstand nach oben */
+  width: 270px;                          /* Feste Desktop-Größe */
+  opacity: 0.85;                         /* Dezent */
 }
 
-
-/* FORMULAR */
+/* Kontaktformular */
 .contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  margin-top: 60px;
-  margin-left: 24px;
+  display: flex;                         /* Vertikales Formular */
+  flex-direction: column;                /* Felder untereinander */
+  gap: 18px;                             /* Abstand zwischen Feldern */
+  margin-top: 60px;                      /* Abstand nach oben */
+  margin-left: 24px;                     /* Abstand zum Text */
 }
 
+/* Leichter Versatz für Animation/Optik */
+.contact-form {
+  transform: translateY(20px);
+}
+
+/* Input- & Textarea-Felder */
 .contact-form input,
 .contact-form textarea {
-  width: 100%;
-  padding: 16px 18px;
-  border-radius: 16px;
-  border: 2px solid var(--outline);
-  background: transparent;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 1rem;
-  color: var(--text);
+  width: 100%;                           /* Volle Breite */
+  padding: 16px 18px;                    /* Große Klickfläche */
+  border-radius: 16px;                   /* Weiche Ecken */
+  border: 2px solid var(--outline);      /* Einheitlicher Rahmen */
+  background: transparent;               /* Passt zum Design */
+  font-family: 'DM Sans', sans-serif;    /* Einheitliche Schrift */
+  font-size: 1rem;                       /* Standardschriftgröße */
+  color: var(--text);                    /* Textfarbe */
 }
 
+/* Textarea-spezifisch */
 .contact-form textarea {
-  min-height: 190px;
-  resize: vertical;
+  min-height: 190px;                     /* Genug Platz für Nachricht */
+  resize: vertical;                      /* Nur vertikal veränderbar */
 }
 
+/* Fokus-Zustand */
 .contact-form input:focus,
 .contact-form textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(230,122,142,0.18);
+  outline: none;                         /* Browser-Outline entfernen */
+  border-color: var(--accent);           /* Akzentfarbe bei Fokus */
+  box-shadow: 0 0 0 4px rgba(230,122,142,0.18); /* Weicher Fokus-Ring */
 }
-
-/* BUTTON */
+/* Senden-Button im Kontaktformular */
 .contact-form button {
-  align-self: flex-start;
-  margin-top: 12px;
-  padding: 14px 30px;
-  background: var(--accent);
-  color: white;
-  border: none;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.6px;
-  cursor: pointer;
-  transition: transform .25s ease, box-shadow .25s ease;
+  align-self: flex-start;            /* Button links im Formular */
+  margin-top: 12px;                  /* Abstand nach oben */
+  padding: 14px 30px;                /* Große Klickfläche */
+  background: var(--accent);         /* Akzentfarbe */
+  color: white;                      /* Weißer Text */
+  border: none;                      /* Kein Rahmen */
+  border-radius: 999px;              /* Pillenform */
+  font-weight: 700;                  /* Gut lesbar */
+  font-size: 0.95rem;                /* Kompakte Schrift */
+  letter-spacing: 0.6px;             /* Etwas Luft zwischen Buchstaben */
+  cursor: pointer;                   /* Klick-Cursor */
+  transition: transform .25s ease, box-shadow .25s ease; /* Hover-Effekt */
 }
 
 .contact-form button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(230,122,142,0.35);
+  transform: translateY(-3px);       /* Schwebe-Effekt */
+  box-shadow: 0 12px 28px rgba(230,122,142,0.35); /* Akzent-Schatten */
 }
 
-  .contact-form {
-    margin-left: 0;
-    margin-top: 24px;
-  }
+/* Mobile / volle Breite */
+.contact-form button {
+  align-self: stretch;               /* Button über gesamte Breite */
+}
 
-  .contact-form button {
-    align-self: stretch;
-  }
-
-
+/* Formular-Labels */
 label {
-  font-size:0.95rem;
-  font-weight:600;
-  color:var(--text);
-  margin-bottom:4px;
-  display:block;
+  font-size: 0.95rem;                /* Gut lesbar */
+  font-weight: 600;                  /* Hervorgehoben */
+  color: var(--text);                /* Textfarbe */
+  margin-bottom: 4px;                /* Abstand zum Feld */
+  display: block;                    /* Eigene Zeile */
 }
 
+/* Formular-Felder allgemein */
 input,
 textarea{
-  width:100%;
-  padding:14px 16px;
-  border-radius:14px;
-  border:2px solid var(--outline);
-  background:#fff;
-  color:var(--text);
-  font-size:1rem;
-  font-family:'DM Sans', sans-serif;
-  transition:border-color .25s ease, box-shadow .25s ease;
+  width: 100%;                       /* Volle Breite */
+  padding: 14px 16px;                /* Innenabstand */
+  border-radius: 14px;               /* Abgerundete Ecken */
+  border: 2px solid var(--outline);  /* Rahmen */
+  background: #fff;                  /* Weißer Hintergrund */
+  color: var(--text);                /* Textfarbe */
+  font-size: 1rem;                   /* Standardschrift */
+  font-family: 'DM Sans', sans-serif;/* Einheitliche Schrift */
+  transition: border-color .25s ease, box-shadow .25s ease; /* Fokus-Effekt */
 }
 
+/* Fokus-Zustand */
 input:focus,
 textarea:focus{
-  border-color:var(--accent);
-  box-shadow:0 0 0 4px rgba(230,122,142,0.25);
-  outline:none;
+  border-color: var(--accent);       /* Akzentfarbe */
+  box-shadow: 0 0 0 4px rgba(230,122,142,0.25); /* Fokus-Ring */
+  outline: none;                     /* Browser-Outline aus */
 }
 
+/* Textfeld */
 textarea{
-  min-height:130px;
-  resize:vertical;
+  min-height: 130px;                 /* Mindesthöhe */
+  resize: vertical;                  /* Nur vertikal skalierbar */
 }
 
-/* SEND BUTTON */
+/* Alternativer Primary-Button im Formular */
 form .btn.primary{
-  margin-top:10px;
-  background:var(--accent);
-  border:2px solid var(--outline);
-  padding:14px 20px;
-  font-weight:600;
-  color:white;
-  border-radius:14px;
-  transition:all .25s ease;
+  margin-top: 10px;                  /* Abstand nach oben */
+  background: var(--accent);         /* Akzentfarbe */
+  border: 2px solid var(--outline);  /* Rahmen */
+  padding: 14px 20px;                /* Innenabstand */
+  font-weight: 600;                  /* Etwas weniger fett */
+  color: white;                      /* Weißer Text */
+  border-radius: 14px;               /* Abgerundete Ecken */
+  transition: all .25s ease;         /* Hover-Animation */
 }
 
 form .btn.primary:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 26px rgba(143,121,111,0.22);
+  transform: translateY(-2px);       /* Leichter Hover */
+  box-shadow: 0 10px 26px rgba(143,121,111,0.22); /* Schatten */
 }
 
 /* ============================= */
 /*             FOOTER            */
 /* ============================= */
 
+/* Footer-Grundlayout */
 footer {
-  text-align: center;
-  padding-top: clamp(32px, 5vw, 56px);     /* deutlich höher */
-  padding-bottom: clamp(24px, 4vw, 40px);  /* kaum Leerraum unten */
-  color: var(--muted);
-  font-size: 0.9rem;
+  text-align: center;                /* Zentrierter Text */
+  padding-top: clamp(32px, 5vw, 56px); /* Großzügiger Abstand oben */
+  padding-bottom: clamp(24px, 4vw, 40px); /* Wenig Abstand unten */
+  color: var(--muted);               /* Gedämpfte Textfarbe */
+  font-size: 0.9rem;                 /* Kleine Schrift */
 }
 
+/* Footer-Inhalt */
 .footer-inner{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:22px;
+  display: flex;                     /* Vertikales Layout */
+  flex-direction: column;            /* Elemente untereinander */
+  align-items: center;               /* Horizontal zentriert */
+  gap: 22px;                         /* Abstand zwischen Elementen */
 }
 
 .footer-name{
-  font-size:0.9rem;
-  opacity:0.85;
+  font-size: 0.9rem;                 /* Kleine Namensanzeige */
+  opacity: 0.85;                     /* Etwas weicher */
 }
 
 .footer-links{
-  display:flex;
-  gap:24px;
+  display: flex;                     /* Icons nebeneinander */
+  gap: 24px;                         /* Abstand zwischen Icons */
 }
 
+/* Social Icons */
 .footer-icon img{
-  width:26px;
-  height:26px;
-  opacity:0.85;
-  transition:all .25s ease;
-  filter:brightness(0) saturate(100%) invert(34%) sepia(16%) saturate(300%) hue-rotate(340deg);
+  width: 26px;                       /* Einheitliche Icon-Größe */
+  height: 26px;
+  opacity: 0.85;                     /* Dezent */
+  transition: all .25s ease;         /* Hover-Animation */
+  filter: brightness(0) saturate(100%) invert(34%) sepia(16%) saturate(300%) hue-rotate(340deg);
 }
 
+/* Lightmode Hover */
 html:not(.dark) .footer-icon img:hover {
-  transform: translateY(-3px) scale(1.06);
-  opacity: 1;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* softer neutral glow */
+  transform: translateY(-3px) scale(1.06); /* Schwebe- & Zoom-Effekt */
+  opacity: 1;                       /* Volle Sichtbarkeit */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* Weicher Glow */
   transition: all 0.35s ease;
 }
 
@@ -910,130 +908,123 @@ html:not(.dark) .footer-icon img:hover {
 /*        SCROLL EFFECTS         */
 /* ============================= */
 
+/* Elemente erscheinen beim Scrollen */
 .reveal-on-scroll{
-  opacity:0;
-  transform:translateY(12px);
-  transition:opacity .45s ease, transform .45s ease;
-  will-change:opacity,transform;
+  opacity: 0;                        /* Start: unsichtbar */
+  transform: translateY(12px);       /* Start: leicht verschoben */
+  transition: opacity .45s ease, transform .45s ease; /* Animation */
+  will-change: opacity, transform;   /* Performance-Hinweis */
 }
 
 .reveal-on-scroll.is-visible{
-  opacity:1;
-  transform:none;
+  opacity: 1;                        /* Sichtbar */
+  transform: none;                   /* Zurück an Position */
 }
 
+/* Fade-In beim Laden */
 .fade-in-on-load{
-  opacity:0;
-  transform:translateY(20px);
-  animation:fadeSlideUp 1s ease-out forwards;
-  animation-delay:.2s;
+  opacity: 0;                        /* Start unsichtbar */
+  transform: translateY(20px);       /* Start weiter unten */
+  animation: fadeSlideUp 1s ease-out forwards; /* Einblend-Animation */
+  animation-delay: .2s;              /* Kleine Verzögerung */
 }
 
+/* Keyframes für Fade + Slide */
 @keyframes fadeSlideUp{
-  0%{opacity:0;transform:translateY(20px);}
-  100%{opacity:1;transform:translateY(0);}
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-/* ============================= */
-/*           SCROLLBAR           */
-/* ============================= */
-
+/* Scrollbar-Styling (nur WebKit-Browser wie Chrome/Safari) */
 ::-webkit-scrollbar{
-  width:10px;
+  width: 10px;                      /* Breite der Scrollbar */
 }
 
 ::-webkit-scrollbar-track{
-  background:#FFEFE9;
-  border-left:1px solid #F0DCD3;
+  background: #FFEFE9;              /* Hintergrund der Scroll-Leiste */
+  border-left: 1px solid #F0DCD3;   /* Trennlinie zur Seite */
 }
 
 ::-webkit-scrollbar-thumb{
-  background:var(--accent);
-  border-radius:99px;
-  border:2px solid #FFEFE9;
+  background: var(--accent);        /* Scroll-Daumen in Akzentfarbe */
+  border-radius: 99px;              /* Rund & weich */
+  border: 2px solid #FFEFE9;        /* Abstand zum Track */
 }
 
-  .hero-media{
-    min-height:350px;
-    margin-top:30px;
-  }
+/* Hero-Medienbereich */
+.hero-media{
+  min-height: 350px;                /* Mindesthöhe für Medien */
+  margin-top: 30px;                 /* Abstand nach oben */
+}
 
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+/* Grid-Anpassung (z.B. Tablet) */
+.grid{
+  grid-template-columns: repeat(2, 1fr); /* Nur zwei Spalten */
+}
 
-  section{
-    padding-top:70px;
-    padding-bottom:60px;
-  }
+/* Kompaktere Sections */
+section{
+  padding-top: 70px;                /* Weniger Abstand oben */
+  padding-bottom: 60px;             /* Weniger Abstand unten */
+}
+
 
 /* ============================= */
 /*          DARK MODE            */
 /* ============================= */ 
 
+/* Dark-Mode Design-Variablen */
 html.dark {
-  /* Deep Berry Hintergrund */
-  --bg: #14090e;
-
-  /* Panels / Cards – deep berry soft */
-  --panel: #1c1016;
-  --card: #1c1016;
-
-  /* Textfarben */
-  --text: #f7e5ef;
-  --muted: #d7b3c4;
-
-  /* Rosa Akzente bleiben */
-  --accent: #dd9fba;
-  --accent-2: #811c48;
-
-  /* Outline / Rahmen */
-  --outline: #5a2a42;
-
-  /* Schatten etwas dunkler */
-  --shadow: 0 10px 30px rgba(0,0,0,0.55);
+  --bg: #14090e;                    /* Dunkler Hintergrund */
+  --panel: #1c1016;                 /* Panels / Flächen */
+  --card: #1c1016;                  /* Karten */
+  --text: #f7e5ef;                  /* Heller Text */
+  --muted: #d7b3c4;                 /* Gedämpfter Text */
+  --accent: #dd9fba;                /* Rosa Akzent */
+  --accent-2: #811c48;              /* Dunkler Akzent */
+  --outline: #5a2a42;               /* Rahmenfarbe */
+  --shadow: 0 10px 30px rgba(0,0,0,0.55); /* Stärkerer Schatten */
 }
 
-/* Hintergrund */
+/* Darkmode Seitenhintergrund */
 html.dark body {
   background: linear-gradient(180deg, #14090e 0%, #0d060a 100%);
+}
 
-/*Scroll*/
+/* Darkmode Header-Shadow beim Scrollen */
 body.dark header.scrolled-glass {
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
 }
 
-  
-}
-
-/* Inputs: etwas heller, soft berry */
+/* Inputs im Darkmode */
 html.dark input,
 html.dark textarea {
-  background: #2d1c25;
-  color: var(--text);
-  border-color: var(--outline);
+  background: #2d1c25;              /* Dunkler Input-Hintergrund */
+  color: var(--text);               /* Heller Text */
+  border-color: var(--outline);     /* Dunkler Rahmen */
 }
 
-/* Darkmode: Tags in Soft Dusty Pink */
+/* Tags im Darkmode */
 html.dark .tag {
-  background: #c986a5;
+  background: #c986a5;              /* Softes Rosa */
   color: #ffffff;
   border-color: var(--outline);
   box-shadow: 0 2px 4px rgba(0,0,0,0.25);
 }
 
-/* Darkmode: Projektkarten etwas rosa-toniger machen */
+/* Projektkarten im Darkmode */
 html.dark .card {
-  background: #2a1822;   /* soft berry rosa */
+  background: #2a1822;              /* Rosa-Berry-Ton */
   border-color: var(--outline);
   box-shadow: var(--shadow);
 }
 
+/* Akzentname mit Glow */
 html.dark .accent-name {
   text-shadow: 0 4px 14px rgba(185, 116, 147, 0.35);
 }
 
-/* Darkmode: Hover Effekt für Projektkarten */
+/* Hover-Effekt für Karten */
 html.dark .card:hover {
   transform: translateY(-6px) scale(1.015);
   border-color: var(--accent);
@@ -1042,57 +1033,7 @@ html.dark .card:hover {
     0 10px 20px rgba(0, 0, 0, 0.35);
 }
 
-/* Darkmode Scrollbar */
-html.dark ::-webkit-scrollbar-track {
-  background: var(--panel);
-  border-left: 1px solid transparent;
-}
-
-html.dark .contact-note {
-  color: #d7b3c4; /* soft berry muted */
-  opacity: 0.95;
-}
-
-
-html.dark *,
-html:not(.dark) * {
-  transition: background .35s ease, color .35s ease, border-color .35s ease;
-}
-
-
-html.dark .badge {
-  background: #b97493;   /* passt perfekt zu tags */
-  color: #ffffff;
-  border-color: var(--outline);
-}
-
-/* ============================= */
-/*     DARKMODE SOCIAL ICONS     */
-/* ============================= */
-
-/* GitHub + LinkedIn Icons im Darkmode in Soft Dusty Pink */
-html.dark .footer-icon img {
-  filter: brightness(0) saturate(100%) invert(82%) sepia(17%) saturate(650%) hue-rotate(289deg) brightness(95%) contrast(92%);
-  opacity: 0.95;
-}
-
-/* Hover Effekt im Darkmode: etwas heller Soft Pink */
-html.dark .footer-icon img:hover {
-  filter: brightness(0) saturate(100%) invert(88%) sepia(20%) saturate(700%) hue-rotate(289deg) brightness(105%) contrast(95%);
-}
-
-
-html.dark .thumb {
-  background: #3a2130;  /* etwas heller, warm-rosa */
-  border-color: var(--outline);
-}
-
-html.dark .tag:hover {
-  background: #d49bb7;
-  color: #ffffff;
-}
-
-/* Scrollbar */
+/* Scrollbar im Darkmode */
 html.dark ::-webkit-scrollbar-track {
   background: var(--panel);
 }
@@ -1102,148 +1043,154 @@ html.dark ::-webkit-scrollbar-thumb {
   border-color: var(--panel);
 }
 
-html.dark .footer-icon img {
-  filter: brightness(0) saturate(100%) invert(82%) sepia(17%) saturate(650%) hue-rotate(289deg) brightness(95%) contrast(92%);
-  opacity: 0.95;
-  transition: all 0.35s ease;
+/* Globale sanfte Transitions beim Theme-Wechsel */
+html.dark *,
+html:not(.dark) * {
+  transition: background .35s ease, color .35s ease, border-color .35s ease;
 }
 
-/* Hover: Soft White-Pink (#f5dce6) */
+/* Badge im Darkmode */
+html.dark .badge {
+  background: #b97493;
+  color: #ffffff;
+  border-color: var(--outline);
+}
+
+/* Footer-Icons im Darkmode */
+html.dark .footer-icon img {
+  filter: brightness(0) saturate(100%) invert(82%) sepia(17%) saturate(650%) hue-rotate(289deg);
+  opacity: 0.95;
+}
+
+/* Hover auf Social Icons */
 html.dark .footer-icon img:hover {
-  filter: brightness(0) saturate(100%) invert(93%) sepia(7%) saturate(264%) hue-rotate(285deg) brightness(105%) contrast(96%);
+  filter: brightness(0) saturate(100%) invert(93%) sepia(7%) saturate(264%) hue-rotate(285deg);
   opacity: 1;
   transform: translateY(-3px) scale(1.06);
 }
-/* ============================= */
-/*       THEME TOGGLE (SVG)      */
-/* ============================= */
 
-/* Hover – wie Nav */
-.theme-toggle:hover {
-  background: var(--card);
+/* Thumbnails im Darkmode */
+html.dark .thumb {
+  background: #3a2130;              /* Warmer Rosa-Ton */
   border-color: var(--outline);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 14px rgba(143,121,111,0.18);
 }
 
-/* ============================= */
-/*       THEME TOGGLE (SVG)      */
-/* ============================= */
+/* Tag Hover im Darkmode */
+html.dark .tag:hover {
+  background: #d49bb7;
+  color: #ffffff;
+}
 
+/* Theme-Toggle Hover-Zustand (wie Navigation) */
+.theme-toggle:hover {
+  background: var(--card);          /* Gleicher Hover-Hintergrund wie Nav */
+  border-color: var(--outline);     /* Rahmen sichtbar machen */
+  transform: translateY(-3px);      /* Leichter Schwebe-Effekt */
+  box-shadow: 0 6px 14px rgba(143,121,111,0.18); /* Dezenter Schatten */
+}
+
+/* Theme-Toggle Button */
 .theme-toggle {
-  display: flex;
+  display: flex;                    /* Zentriert Icon */
   align-items: center;
   justify-content: center;
 
-  padding: 8px 14px;
-  border-radius: 12px;
-  background: transparent;
-  border: 2px solid transparent;
+  padding: 8px 14px;                /* Klickfläche */
+  border-radius: 12px;              /* Abgerundete Form */
+  background: transparent;          /* Kein Hintergrund im Normalzustand */
+  border: 2px solid transparent;    /* Platz für Hover-Rahmen */
 
-  cursor: pointer;
-  transition: all .25s ease;
-  position: relative;
+  cursor: pointer;                  /* Klickbar */
+  transition: all .25s ease;        /* Sanfte Animation */
+  position: relative;               /* Bezugspunkt für Icons */
 }
 
-.theme-toggle:hover {
-  background: var(--card);
-  border-color: var(--outline);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 14px rgba(143,121,111,0.18);
-}
-
-/* Beide Icons übereinander */
+/* Beide Icons liegen übereinander */
 .theme-toggle img {
-  position: absolute;
+  position: absolute;               /* Übereinander stapeln */
   width: 22px;
   height: 22px;
-  opacity: 0;
+  opacity: 0;                       /* Standard: unsichtbar */
   transition: opacity .35s ease, transform .35s ease, color .35s ease;
 }
-
-/* ============================= */
-/*  ICON COLORS & VISIBLE STATES */
-/* ============================= */
-
-/* ---------- LIGHTMODE ---------- */
-
-/* Mond sichtbar */
+/* LIGHTMODE: Mond-Icon anzeigen */
 html:not(.dark) .icon-moon {
-  opacity: 1;
-  transform: rotate(0deg);
-  color: #6E6159;      /* Muted Brown */
+  opacity: 1;                /* Mond sichtbar */
+  transform: rotate(0deg);   /* Normale Ausrichtung */
+  color: #6E6159;            /* Gedämpfte Farbe */
 }
 
-/* Sonne unsichtbar */
+/* LIGHTMODE: Sonnen-Icon ausblenden */
 html:not(.dark) .icon-sun {
-  opacity: 0;
-  transform: rotate(-180deg);
-  color: transparent;
+  opacity: 0;                /* Unsichtbar */
+  transform: rotate(-180deg);/* Wegdrehen für Animation */
+  color: transparent;        /* Keine Farbe */
 }
 
-/* ---------- DARKMODE ---------- */
-
-/* Sonne sichtbar */
+/* DARKMODE: Sonnen-Icon anzeigen */
 html.dark .icon-sun {
-  opacity: 1;
-  transform: rotate(0deg);
-  color: #F7E5EF;      /* Hellrosa */
+  opacity: 1;                /* Sonne sichtbar */
+  transform: rotate(0deg);   /* Normale Ausrichtung */
+  color: #F7E5EF;            /* Helle Farbe */
 }
 
-/* Mond unsichtbar */
+/* DARKMODE: Mond-Icon ausblenden */
 html.dark .icon-moon {
-  opacity: 0;
-  transform: rotate(180deg);
-  color: transparent;
+  opacity: 0;                /* Unsichtbar */
+  transform: rotate(180deg); /* Wegdrehen für Animation */
+  color: transparent;        /* Keine Farbe */
 }
 
-/* WebKit */
+/* Scrollbar standardmäßig verstecken (WebKit) */
 ::-webkit-scrollbar {
-  width: 0;
+  width: 0;                  /* Unsichtbar */
 }
 
+/* Scrollbar nur bei Interaktion anzeigen */
 body:hover ::-webkit-scrollbar {
-  width: 8px;
+  width: 8px;                /* Schmale Scrollbar */
 }
 
+/* Scrollbar-Hintergrund */
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 
+/* Scrollbar-Daumen */
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 120, 180, 0.6);
-  border-radius: 8px;
+  background: rgba(255, 120, 180, 0.6); /* Akzentfarbe */
+  border-radius: 8px;                   /* Abgerundet */
 }
 
-/* Firefox */
+/* Firefox Scrollbar */
 html {
-  scrollbar-width: none;
+  scrollbar-width: none;            /* Versteckt */
 }
 
 html:hover {
-  scrollbar-width: thin;
+  scrollbar-width: thin;            /* Beim Hover sichtbar */
   scrollbar-color: rgba(255,120,180,0.6) transparent;
 }
 
-
 /* ============================= */
-/*     PROJECT DETAIL PAGE      */
+/*     PROJECT DETAIL PAGE       */
 /* ============================= */
 
+/* Seitenabstände für Projektseiten */
 .projects-page {
-  padding-top: 0;        /* 🔥 DAS zieht alles hoch */
-  padding-bottom: 120px;
+  padding-top: 0;                   /* Zieht Inhalt näher an Header */
+  padding-bottom: 120px;            /* Luft nach unten */
 }
 
 .projects-page section {
-  padding-top: 0 !important;
+  padding-top: 0 !important;        /* Entfernt Section-Abstände */
   padding-bottom: 0;
 }
 
-/* Back-Link */
+/* Zurück-Link */
 .back-link {
   display: inline-block;
-  margin-bottom: 48px;
+  margin-bottom: 48px;              /* Abstand nach unten */
   font-family: 'DM Sans', sans-serif;
   font-weight: 600;
   color: var(--text);
@@ -1252,34 +1199,34 @@ html:hover {
 }
 
 .back-link:hover {
-  transform: translateX(-6px);
+  transform: translateX(-6px);      /* Pfeil-artiger Slide-Effekt */
 }
 
-/* GRID */
+/* Projekt-Grid */
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 48px;
+  display: grid;                    /* Karten-Layout */
+  grid-template-columns: repeat(2, 1fr); /* Zwei Spalten */
+  gap: 48px;                        /* Abstand zwischen Karten */
 }
 
+/* Projektkarte */
 .project-card {
-  min-height: 440px;   /* 👈 deutlich kompakter */
-  padding: 16px;       /* 👈 weniger Innenluft */
-  display: flex;
+  min-height: 440px;                /* Kompakte Höhe */
+  padding: 16px;                    /* Weniger Innenabstand */
+  display: flex;                    /* Flex für Button-Fixierung */
   flex-direction: column;
 }
 
-
+/* Text in Projektkarten */
 .project-card p {
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: 0.9rem;                /* Etwas kleiner */
+  line-height: 1.5;                 /* Kompakte Lesbarkeit */
 }
 
-
-/* Action Buttons unten fixieren */
+/* Buttons immer unten */
 .card-actions {
-  margin-top: auto;
-  padding-top: 6px; /* 👈 leichte Trennung */
+  margin-top: auto;                 /* Drückt Buttons nach unten */
+  padding-top: 6px;                 /* Leichte Trennung */
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
@@ -1287,129 +1234,131 @@ html:hover {
 
 /* Secondary Button */
 .btn.secondary {
-  background: transparent;
-  border: 2px solid var(--outline);
+  background: transparent;          /* Kein Hintergrund */
+  border: 2px solid var(--outline); /* Klarer Rahmen */
 }
-
-/* ============================= */
-/*        PROJECT GRID PAGE      */
-/* ============================= */
-
+/* Grundlayout der Projektseite */
 .projects-page {
-  padding-top: 140px;
-  padding-bottom: 120px;
+  padding-top: 90px;              /* Abstand zur Navbar */
+  padding-bottom: 70px;           /* Luft nach unten */
 }
 
-/* GRID SYSTEM */
+/* Grid für Projektkarten */
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 48px;
+  display: grid;                  /* Grid-Layout */
+  grid-template-columns: repeat(2, 1fr); /* Zwei Spalten */
+  gap: 28px;                      /* Engerer Abstand */
 }
 
-/* PROJECT DETAIL CARD */
+/* Einzelne Projektkarte */
 .project-card {
-  min-height: 520px;
-  display: flex;
+  min-height: 290px;              /* Kompakte Kartenhöhe */
+  padding: 12px;                  /* Weniger Innenabstand */
+  display: flex;                  /* Flex für Button-Fixierung */
   flex-direction: column;
 }
 
-/* ACTION BUTTONS */
+/* Thumbnail innerhalb der Karte */
+.project-card .thumb {
+  aspect-ratio: 4 / 3;            /* Klassisches Bildformat */
+  width: 100%;
+  max-height: 240px;              /* Begrenzt Höhe */
+  margin-bottom: 10px;
+
+  display: flex;                  /* Zentriert Platzhaltertext */
+  align-items: center;
+  justify-content: center;
+
+  font-size: 0.85rem;             /* Kleinere Schrift */
+}
+
+/* Titel der Projektkarte */
+.project-card h3 {
+  margin-bottom: 6px;             /* Kleiner Abstand zum Text */
+}
+
+/* Beschreibungstext */
+.project-card p {
+  font-size: 0.95rem;             /* Gut lesbar */
+  line-height: 1.45;
+  margin-bottom: 8px;
+  flex-grow: 1;                   /* Füllt Platz → Buttons unten */
+}
+
+/* Buttons am Kartenende */
 .card-actions {
-  margin-top: auto;
+  margin-top: auto;               /* Erzwingt Position unten */
+  padding-top: 2px;
   display: flex;
-  gap: 14px;
+  gap: 10px;
 }
 
-/* SECONDARY BUTTON */
-.btn.secondary {
-  background: transparent;
-  border: 2px solid var(--outline);
+/* Responsive: Mobile */
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: 1fr;   /* Eine Spalte */
+    gap: 24px;
+  }
+
+  .project-card {
+    min-height: auto;             /* Automatische Höhe */
+    padding: 14px;
+  }
+
+  .project-card .thumb {
+    height: 120px;                /* Kompakter auf Mobile */
+  }
 }
 
-
+/* Donut Loader (Seitenwechsel) */
 #donut-loader {
   position: fixed;
-  inset: 0;
+  inset: 0;                       /* Vollbild */
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
 
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease;
-
-  background: var(--loader-bg);
-}
-
-#donut-loader {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-
-  background: var(--bg); /* 🔥 exakt Theme-Background */
-  
-  opacity: 0;
+  background: var(--bg);          /* Aktueller Theme-Hintergrund */
+  opacity: 0;                     /* Standard: unsichtbar */
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
 
+/* Loader aktiv */
 #donut-loader.active {
   opacity: 1;
-  pointer-events: all;
+  pointer-events: all;            /* Blockiert Klicks */
 }
 
+/* Donut-Video */
 .donut-loader-video {
   width: 500px;
   height: auto;
 }
 
-
+/* Hintergrundfarbe je Theme */
 body.dark {
-  --bg: #12070d;   /* berry / dunkel */
+  --bg: #12070d;
 }
 
 body.light {
-  --bg: #fff6f9;  /* hell */
+  --bg: #fff6f9;
 }
 
 body {
   background: var(--bg);
 }
 
-.project-card p {
-  flex-grow: 1;   /* 👈 zieht den Textbereich nach oben/unten */
-}
-
-.tag-list {
-  margin-top: 12px;
-  margin-bottom: 14px;   /* fixer Abstand zu Buttons */
-}
-
-.card-actions {
-  margin-top: auto;   /* 👈 zwingt Buttons nach unten */
-}
-
-/* ============================= */
-/*        FOOTER NAV LINK        */
-/* ============================= */
-
-/* ============================= */
-/*        BACK NAV LINK          */
-/* ============================= */
-
+/* Zurück-Navigation über den Cards */
 .back-nav {
   display: flex;
   justify-content: center;
-  margin-top: -20px;      /* 👈 näher an die Überschrift */
-  margin-bottom: 43px; /* 👈 weniger Abstand zu Cards */
+  margin-top: -20px;              /* Näher an Header */
+  margin-bottom: 43px;
 }
 
-
+/* Zurück-Link */
 .back-link-clean {
   display: inline-flex;
   align-items: center;
@@ -1421,13 +1370,7 @@ body {
 
   color: var(--muted);
   text-decoration: none;
-
   transition: transform 0.25s ease, color 0.25s ease;
-}
-
-.back-link-clean .arrow {
-  font-size: 1.1rem;
-  transition: transform 0.25s ease;
 }
 
 .back-link-clean:hover {
@@ -1435,88 +1378,110 @@ body {
   transform: translateX(-4px);
 }
 
-.back-link-clean:hover .arrow {
-  transform: translateX(-4px);
-}
-
-/* ============================= */
-/*      PROJECTS PAGE HEADER     */
-/* ============================= */
-
+/* Header der Projektseite */
 .projects-header {
-  margin-top: -100px;          /* 👈 nah an der Navbar */
+  margin-top: -100px;             /* Sehr nah an Navbar */
   margin-bottom: 24px;
   text-align: center;
   position: relative;
   z-index: 1;
 }
 
-.projects-header h1 {
-  font-family: 'Rubik', sans-serif;
-  font-size: clamp(32px, 4vw, 44px);
-  font-weight: 800;
-  color: var(--text);
-
-  transition:
-    font-size 0.3s ease,
-    opacity 0.3s ease;
+/* Header schrumpft beim Scrollen */
+.projects-header.is-small h1 {
+  font-size: 2.2rem;
+  transform: translateY(-2px);
 }
 
-/* kleiner & ruhiger beim Scrollen */
+/* Noch ruhiger beim weiteren Scrollen */
 body.page-scrolled .projects-header h1 {
   font-size: 26px;
   font-weight: 700;
   opacity: 0.75;
 }
 
-
-/* ============================= */
-/*           RESPONSIVE          */
-/* ============================= */
-
-/* ============================= */
-/*        DESKTOP ZOOM FIX       */
-/* ============================= */
-
-@media (min-width: 1200px) {
-  .zoom-wrap {
-    transform: scale(1.25);
-    transform-origin: top center;
-
-    /* Platz ausgleichen */
-    width: 80%;
-    margin: 0 auto;
-  }
-}
-
-
 /* ============================= */
 /*   PROJECT CARDS – HOMEPAGE    */
 /* ============================= */
 
+/* Grid & Cards auf allen Seiten außer der Projektübersicht */
 body:not(.projects-page) .grid {
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  grid-template-columns: repeat(3, 1fr); /* Drei Spalten auf Startseite etc. */
+  gap: 32px;                             /* Etwas luftiger Abstand */
 }
 
 body:not(.projects-page) .card {
-  padding: 18px;
+  padding: 18px;                         /* Mehr Innenabstand als auf Projektseite */
 }
 
 body:not(.projects-page) .thumb {
-  aspect-ratio: 16 / 10;
-  margin-bottom: 0.75rem;
+  aspect-ratio: 16 / 10;                 /* Breiteres Thumbnail-Format */
+  margin-bottom: 0.75rem;                /* Abstand zum Text */
 }
 
 body:not(.projects-page) .card-actions {
-  margin-top: 12px;
+  margin-top: 12px;                      /* Abstand zwischen Text & Buttons */
 }
 
-/* ============================= */
-/*   EINHEITLICHE SECTION ABSTÄNDE */
-/* ============================= */
-
+/* Einheitliche Abstände für alle Sections */
 section {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 80px;                     /* Gleichmäßiger Abstand oben */
+  padding-bottom: 80px;                  /* Gleichmäßiger Abstand unten */
 }
+
+/* ============================= */
+/*     PROJECT DETAIL PAGE       */
+/* ============================= */
+
+/* Wrapper für Projekt-Detailseiten */
+.project-detail {
+  max-width: 800px;                      /* Angenehme Lesebreite */
+  margin: auto;                          /* Zentriert */
+}
+
+/* Große Projekt-Überschrift */
+.project-hero h1 {
+  font-size: 2.6rem;                     /* Dominante Headline */
+  margin-bottom: 6px;
+}
+
+/* Meta-Infos (z.B. Jahr, Tech) */
+.project-meta {
+  color: var(--muted);                   /* Dezente Farbe */
+  font-size: 0.9rem;                     /* Kleinere Schrift */
+  margin-bottom: 40px;                   /* Abstand zum Inhalt */
+}
+
+/* Zwischenüberschriften im Projekttext */
+.project-content h2 {
+  margin-top: 48px;                      /* Klare Abschnittstrennung */
+  margin-bottom: 12px;
+}
+
+/* Text & Listen im Projektinhalt */
+.project-content p,
+.project-content li {
+  line-height: 1.6;                      /* Gute Lesbarkeit */
+  color: var(--text);                    /* Haupttextfarbe */
+}
+
+/* Links (Live Demo / Source Code) */
+.project-links {
+  margin-top: 48px;                      /* Abstand zum Text */
+  display: flex;                         /* Buttons nebeneinander */
+  gap: 16px;
+  flex-wrap: wrap;                       /* Umbruch auf kleinen Screens */
+}
+
+/* Tech-Stack Abschnitt */
+.project-tech {
+  margin-top: 48px;                      /* Trennung zum oberen Bereich */
+}
+
+
+/* - MDN Web Docs → offizielle CSS-Referenz & Erklärungen
+   - CSS-Tricks → Layout & UI-Beispiele
+   - freeCodeCamp → verständliche Tutorials & Grundlagen
+   - Kevin Powell (YouTube) → modernes CSS & saubere Denkweise
+   - CodePen / Awwwards → Inspiration & Live-Beispiele
+*/

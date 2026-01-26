@@ -27,7 +27,7 @@
 
 <body>
 
-<header>
+<header class="site-header">
   <div class="nav">
 
     <!-- BRAND -->
@@ -58,7 +58,6 @@
   </div>
 </header>
 
-<div class="zoom-wrap">
 <main id="top" class="container">
 
   <section id="hero" class="hero-section">
@@ -117,16 +116,16 @@
 <!-- PROJEKTE -->
 <section id="projekte">
   <div class="section-head reveal-on-scroll">
-    <h2>Projekte ⋆˙⟡</h2>
+    <h2>Projekte</h2>
   </div>
 
   <div class="grid">
 
     <article class="card reveal-on-scroll">
-      <div class="badge">2025</div>
+      <div class="badge">2026</div>
       <div class="thumb">Coming Soon</div>
       <h3>Projekt 1</h3>
-      <p>Wird bald veröffentlicht ✨</p>
+      <p>Bald verfügbar!</p>
       <div class="tag-list">
         <span class="tag">HTML</span><span class="tag">CSS</span>
       </div>
@@ -136,7 +135,7 @@
       <div class="badge">2025</div>
       <div class="thumb">Coming Soon</div>
       <h3>Projekt 2</h3>
-      <p>In Arbeit…</p>
+      <p>Bald verfügbar!</p>
       <div class="tag-list"><span class="tag">Godot</span></div>
     </article>
 
@@ -153,7 +152,7 @@
   <div style="text-align:center; margin-top:40px;">
     <a
     class="btn primary wobble-on-hover project-link"
-    href="projects.html">
+    href="./projects.html">
   Alle Projekte ansehen
 </a>
 
@@ -164,7 +163,7 @@
 <!-- DONUT LOADER -->
 <div id="donut-loader" aria-hidden="true">
   <video
-    src="assets/Donut/donut.webm"
+    src="./donut.webm"
     autoplay
     loop
     muted
@@ -187,7 +186,8 @@
       <p class="contact-lead">Lust auf einen kleinen Austausch?</p>
 
       <p>
-        Vielleicht bei einem Çay oder Bubble Tea&nbsp;<span class="hand">(auch virtuell )</span><br>
+        Vielleicht bei einem Çay oder Bubble Tea 
+        <span class="hand hand-inline">(auch virtuell)</span><br>
         oder einfach auf ein kurzes Hallo.
       </p>
 
@@ -205,12 +205,12 @@
     </div>
 
     <!-- FORMULAR -->
-    <form class="contact-form reveal-on-scroll" onsubmit="return sendMail(event)">
+    <form class="contact-form onsubmit="return sendMail(event)">
       <input type="Text" id="name" placeholder="Name" required>
       <input type="Email" id="email" placeholder="Email" required>
       <textarea id="Nachricht" placeholder="Nachricht" required></textarea>
 
-      <button type="submit">SENDEN</button>
+      <button type="submit" class="btn primary">SENDEN</button>
     </form>
 
   </div>
@@ -225,17 +225,16 @@
 
     <div class="footer-links">
       <a href="https://github.com/Riimiii" target="_blank" class="footer-icon">
-        <img src="assets/github.svg" alt="GitHub">
+        <img src="assets/GitHub.svg" alt="GitHub">
       </a>
 
       <a href="https://www.linkedin.com/in/gizem-g%C3%BCney-5b8613396/" target="_blank" class="footer-icon">
-        <img src="assets/linkedin.svg" alt="LinkedIn">
+        <img src="assets/LinkedIn.svg" alt="LinkedIn">
       </a>
     </div>
 
   </div>
 </footer>
-</div>
 
 <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Nach oben">
   <span class="arrow-up"></span>

@@ -102,14 +102,16 @@ window.addEventListener("scroll", () => {
 });
 
 /* ============================= */
-/*         DONUT LOADER           */
+/*         loa LOADER           */
 /* ============================= */
 
 document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("donut-loader");
   const video = loader?.querySelector("video");
 
-  if (loader) loader.classList.remove("active");
+  if (loader && document.body.contains(loader)) {
+    loader.classList.remove("active");
+  }  
 
   document.querySelectorAll("a[href]").forEach(link => {
     const url = link.getAttribute("href");
@@ -166,3 +168,28 @@ scrollTopBtn.addEventListener("click", () => {
     behavior: "smooth"
   });
 });
+
+/*grr*/
+
+const projectsHeader = document.querySelector(".projects-header");
+
+if (document.body.classList.contains("projects-page-body") && projectsHeader) {
+  let isSmall = false;
+
+  const SHRINK_AT = 260;
+  const GROW_AT = 120;
+
+  window.addEventListener("scroll", () => {
+    const y = window.scrollY;
+
+    if (!isSmall && y > SHRINK_AT) {
+      projectsHeader.classList.add("is-small");
+      isSmall = true;
+    }
+
+    if (isSmall && y < GROW_AT) {
+      projectsHeader.classList.remove("is-small");
+      isSmall = false;
+    }
+  });
+}
