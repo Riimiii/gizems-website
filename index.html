@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gizem Güney – Portfolio</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+  <!-- DM Sans, Rubik, Pacifico, Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&
+  family=Rubik:wght@600;700;800&family=Pacifico&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Playwrite Magyarorszag -->
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+Magyarorszag:wght@200..700&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+
+    <!-- BRAND -->
+    <a class="brand personal" href="#top" aria-label="Startseite">
+      <div class="name">
+        <span class="big-g">G</span>
+        <div class="name-text">
+          <span class="first">Gizem</span>
+          <span class="last">Güney</span>
+        </div>
+      </div>
+    </a>
+
+    <nav class="nav-right">
+
+      <!-- THEME TOGGLE -->
+      <button class="theme-toggle" id="themeToggle" aria-label="Theme wechseln">
+        <img src="assets/sun.svg" class="icon-sun" alt="Lightmode Icon">
+        <img src="assets/moon.svg" class="icon-moon" alt="Darkmode Icon">
+      </button>
+
+      <a href="#ueber-mich">Über mich</a>
+      <a href="#projekte">Projekte</a>
+      <a href="#kontakt">Kontakt</a>
+
+    </nav>
+
+  </div>
+</header>
+
+<div class="zoom-wrap">
+<main id="top" class="container">
+
+  <section id="hero" class="hero-section">
+    <div class="hero-grid reveal-on-scroll">
+  
+      <!-- TEXT LINKS -->
+      <div class="hero-content">
+        <p class="hero-eyebrow">Hi, ich bin Gizem!</p>
+  
+        <p class="hero-text">
+          Ich probiere mich kreativ aus – ob beim Coden oder mit
+          Designideen für eigene Projekte. Diese Seite ist mein
+          kleiner Ort, um zu zeigen, was gerade wächst und entsteht.
+        </p>
+  
+        <div class="hero-actions">
+          <!-- Buttons UNVERÄNDERT -->
+          <a href="#projekte" class="btn btn-primary">Projekte ansehen</a>
+          <a href="#kontakt" class="btn btn-secondary">Kontakt aufnehmen</a>
+        </div>
+      </div>
+  
+      <!-- BILD RECHTS -->
+      <div class="hero-image">
+        <img src="assets/GiziPeace.png" alt="Portrait von Gizem">
+      </div>
+    </div>
+  </section>
+
+  <!-- ÜBER MICH -->
+<section id="ueber-mich" class="about-section">
+  <div class="about-inner reveal-on-scroll">
+
+    <h2>Über mich</h2>
+    <div class="about-divider"></div>
+
+    <p class="about-lead">
+      <p> Hey! Ich bin Gizem, <span id="age"></span>, studiere Informatik an der
+        Bergischen Universität Wuppertal und probiere gern neue Dinge aus –
+        ob beim Coden oder an kleineren Projekten.
+      </p>
+      
+
+    <p>
+      In meiner Freizeit mache ich Sport, spiele Games und verbringe Zeit mit
+      Freunden. Und auch wenn etwas mal nicht auf Anhieb klappt, bin ich mir
+      sicher: 
+      
+      <span class="about-hand">Mit Çay, Geduld und Humor läuft’s irgendwann.</span>
+    </p>
+
+  </div>
+</section>
+
+
+<!-- PROJEKTE -->
+<section id="projekte">
+  <div class="section-head reveal-on-scroll">
+    <h2>Projekte ⋆˙⟡</h2>
+  </div>
+
+  <div class="grid">
+
+    <article class="card reveal-on-scroll">
+      <div class="badge">2025</div>
+      <div class="thumb">Coming Soon</div>
+      <h3>Projekt 1</h3>
+      <p>Wird bald veröffentlicht ✨</p>
+      <div class="tag-list">
+        <span class="tag">HTML</span><span class="tag">CSS</span>
+      </div>
+    </article>
+
+    <article class="card reveal-on-scroll">
+      <div class="badge">2025</div>
+      <div class="thumb">Coming Soon</div>
+      <h3>Projekt 2</h3>
+      <p>In Arbeit…</p>
+      <div class="tag-list"><span class="tag">Godot</span></div>
+    </article>
+
+    <article class="card reveal-on-scroll">
+      <div class="badge">2025</div>
+      <div class="thumb">Coming Soon</div>
+      <h3>Projekt 3</h3>
+      <p>Bald verfügbar!</p>
+      <div class="tag-list"><span class="tag">JavaScript</span></div>
+    </article>
+
+  </div>
+
+  <div style="text-align:center; margin-top:40px;">
+    <a
+    class="btn primary wobble-on-hover project-link"
+    href="projects.html">
+  Alle Projekte ansehen
+</a>
+
+  </div>
+
+</section>
+
+<!-- DONUT LOADER -->
+<div id="donut-loader" aria-hidden="true">
+  <video
+    src="assets/Donut/donut.webm"
+    autoplay
+    loop
+    muted
+    playsinline
+    class="donut-loader-video">
+  </video>
+</div>
+
+
+<!-- KONTAKT -->
+<section id="kontakt" class="contact-section">
+  <div class="contact-grid">
+
+    <!-- TEXT -->
+    <div class="contact-text reveal-on-scroll">
+      <h2>Let’s connect! 💌</h2>
+
+      <div class="contact-divider"></div>
+
+      <p class="contact-lead">Lust auf einen kleinen Austausch?</p>
+
+      <p>
+        Vielleicht bei einem Çay oder Bubble Tea&nbsp;<span class="hand">(auch virtuell )</span><br>
+        oder einfach auf ein kurzes Hallo.
+      </p>
+
+      <p class="contact-soft">
+        Ich lerne gerade, probiere viel aus<br>
+        und freue mich über nette Nachrichten.
+      </p>
+      
+      <img
+        src="assets/Green1.png"
+        alt="Dekorative Illustration"
+        class="contact-illustration"
+      />
+      
+    </div>
+
+    <!-- FORMULAR -->
+    <form class="contact-form reveal-on-scroll" onsubmit="return sendMail(event)">
+      <input type="Text" id="name" placeholder="Name" required>
+      <input type="Email" id="email" placeholder="Email" required>
+      <textarea id="Nachricht" placeholder="Nachricht" required></textarea>
+
+      <button type="submit">SENDEN</button>
+    </form>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+
+    <p class="footer-name">© <span id="year"></span> Gizem Güney</p>
+
+    <div class="footer-links">
+      <a href="https://github.com/Riimiii" target="_blank" class="footer-icon">
+        <img src="assets/github.svg" alt="GitHub">
+      </a>
+
+      <a href="https://www.linkedin.com/in/gizem-g%C3%BCney-5b8613396/" target="_blank" class="footer-icon">
+        <img src="assets/linkedin.svg" alt="LinkedIn">
+      </a>
+    </div>
+
+  </div>
+</footer>
+</div>
+
+<button class="scroll-top-btn" id="scrollTopBtn" aria-label="Nach oben">
+  <span class="arrow-up"></span>
+</button>
+
+<script src="script.js"></script>
+
+<button id="scrollTopBtn" class="scroll-top-btn" aria-label="Nach oben scrollen">
+  <span class="arrow-up"></span>
+</button>
+
+</body>
+</html>

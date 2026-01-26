@@ -1,0 +1,1522 @@
+/* ============================= */
+/*      GLOBAL COLOR SYSTEM      */
+/* ============================= */
+
+:root{
+  --bg:#FFF7F2;
+  --panel:#FFFFFF;
+  --text:#2B2A28;
+  --muted:#6E6159;
+  --accent:#E67A8E;
+  --accent-2:#D9C2A7;
+  --card:#FFF1EA;
+  --name: #fdacbb;
+  --radius:16px;
+  --gap:1.5rem;
+  --outline:#6E6159;
+  --shadow:0 10px 30px rgba(143,121,111,0.15);
+  --accent-soft: color-mix(in oklab, var(--accent) 55%, transparent);
+  --b-big:250px;
+  --b-mid:150px;
+  --b-small:120px;
+  --header-height: 72px;
+}
+
+/* smooth scroll */
+html{
+  scroll-behavior:smooth;
+}
+
+/* ============================= */
+/*           GLOBAL BASE         */
+/* ============================= */
+
+*{
+  box-sizing:border-box;
+}
+
+html, body{
+  cursor: default;
+}
+
+input,
+textarea{
+  cursor:text;
+}
+
+body{
+  margin:0;
+  background:linear-gradient(180deg,#FFF7F2 0%, #FFEFE9 100%);
+  font-family:'DM Sans',sans-serif;
+  color:var(--text);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+
+/*Lightmode Scroll*/
+body.light header.scrolled-glass {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+
+
+/* ============================= */
+/*       TYPOGRAPHY SYSTEM       */
+/* ============================= */
+
+body {
+  font-family: 'DM Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Rubik', sans-serif;
+}
+
+.motto {
+  font-family: 'Pacifico', cursive;
+}
+
+
+/* HEADER benutzt Poppins */
+.brand.personal .name,
+.brand.personal .name-text,
+.brand.personal .big-g {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.brand.personal {
+  margin-left: 40px;   /* vorher 0 → Logo rückt 40px nach rechts */
+}
+
+
+/* ============================= */
+/*           CONTAINER           */
+/* ============================= */
+
+.container{
+  width:min(1100px,96vw);
+  margin:auto;
+  padding-left:clamp(28px,6vw,80px);
+  padding-right:clamp(28px,6vw,80px);
+}
+
+main.container {
+  padding-top: -10px; /* vorher effektiv viel mehr */
+}
+
+/* ============================= */
+/*             HEADER            */
+/* ============================= */
+
+/* Grundzustand (oben, nicht gescrollt) */
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 1000;
+
+  /* Start: komplett ruhig */
+  background: transparent;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+
+  transition:
+    background 0.3s ease,
+    backdrop-filter 0.3s ease,
+    -webkit-backdrop-filter 0.3s ease,
+    box-shadow 0.35s ease,
+    border-color 0.3s ease;
+}
+
+/* Scroll-Zustand (Glass-Effekt) */
+header.scrolled-glass {
+  background: color-mix(in oklab, var(--bg) 50%, transparent);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid
+    color-mix(in oklab, var(--accent-2) 35%, transparent);
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================= */
+/*              NAV              */
+/* ============================= */
+
+.nav {
+  position: relative;
+  height: var(--header-height);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 40px;
+}
+
+
+
+html.dark header.scrolled-glass {
+  background: rgba(28, 16, 22, 0.72);
+}
+
+
+
+/* ORIGINAL LOGO (wie vorher) */
+
+/* ============================= */
+/*     ORIGINAL HEADER LOGO      */
+/*        (Jetzt BOLDER)         */
+/* ============================= */
+
+.brand.personal {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  text-decoration: none;
+  color: var(--text);
+}
+
+/* Wrapper */
+.brand.personal .name {
+  display: flex;
+  align-items: flex-start;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Großes rosa G */
+.brand.personal .big-g {
+  font-size: 2.35rem;     /* leicht größer */
+  font-weight: 800;       /* BOLDER */
+  color: var(--accent);
+  line-height: 1;
+  margin-right: 2px;
+}
+
+/* Name rechts */
+.brand.personal .name-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+/* Gizem – bold */
+.brand.personal .name-text .first {
+  font-size: 1.05rem;
+  font-weight: 800;        /* Bolder */
+  color: var(--text);
+  letter-spacing: 0.3px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Güney – etwas softer */
+.brand.personal .name-text .last {
+  font-size: 1.05rem;
+  font-weight: 700;        /* Slightly less bold */
+  letter-spacing: 0.3px;
+  color: var(--muted);
+  font-family: 'Poppins', sans-serif;
+}
+
+
+/* NAVIGATION */
+.nav-right {
+  display: flex;
+  gap: 18px;
+  margin-right: 40px;  /* vorher 0 → Nav rückt 40px nach links */
+}
+
+
+.nav-right a {
+  text-decoration: none;
+  font-family: "DM Sans", sans-serif;
+  color: var(--muted);
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  border: 2px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.nav-right a:hover {
+  background: var(--card);
+  border-color: var(--outline);
+  color: var(--text);
+  box-shadow: 0 6px 14px rgba(143,121,111,0.18);
+}
+
+/* ============================= */
+/*              HERO             */
+/* ============================= */
+
+.hero{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  align-items:center;
+  gap:clamp(1rem,4vw,3rem);
+  padding:80px 0 60px;
+}
+
+.accent-name {
+  font-family: 'Pacifico', cursive !important;
+  font-size: clamp(48px, 9vw, 92px);
+  margin: 0;
+  margin-left: -40px;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+  font-weight: 400;
+  text-shadow: 0 3px 8px rgba(230, 122, 142, 0.15);
+}
+
+.motto{
+  font-size:1.15rem;
+  margin:10px 0 24px;
+  color:color-mix(in oklab,var(--accent) 70%, #443);
+}
+
+.hero p{
+  max-width:60ch;
+  color:var(--muted);
+}
+
+.cta{
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+
+/* BUTTONS */
+.btn{
+  display:inline-block;
+  padding:12px 20px;
+  border-radius:14px;
+  background:var(--card);
+  border:2px solid var(--outline);
+  text-decoration:none;
+  color:var(--text);
+  font-weight:600;
+  transition:all .25s ease;
+}
+
+.btn.primary{
+  background:var(--accent);
+  border:2px solid var(--outline);
+  color:#fff;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 26px rgba(143,121,111,0.22);
+}
+
+/* ============================= */
+/*             HERO              */
+/* ============================= */
+
+.hero-section {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px; /* Text links | Bild rechts */
+  gap: clamp(48px, 8vw, 120px);
+  align-items: center;
+}
+
+.hero-content {
+  order: 1; /* Text links */
+}
+
+.hero-image {
+  order: 2; /* Bild rechts */
+  margin-top: 32px;     /* 👈 weiter nach unten */
+  margin-left: -40px;
+}
+
+
+
+
+.hero-eyebrow {
+  font-size: 32px;          /* wie vorher, ruhig */
+  font-weight: 600;
+  color: var(--accent);
+  display: inline-block;
+  position: relative;
+  margin-bottom: 18px;
+  z-index: 1;               /* 👈 WICHTIG */
+}
+
+.hero-eyebrow::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  bottom: 12px;
+  width: calc(100% + 12px);
+  height: 15px;
+  background: var(--name);
+  opacity: 0.35;            /* 👈 sichtbar, aber weich */
+  border-radius: 2px;
+  z-index: -1;
+}
+
+/* Fließtext */
+.hero-text {
+  font-size: clamp(1.15rem, 2.2vw, 1.35rem);
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 36px;
+}
+
+/* Buttons */
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* BILD RECHTS – ruhig & klein */
+.hero-image img {
+  width: 100%;
+  max-width: 360px;   /* 👈 größer */
+  aspect-ratio: 1 / 1.1;
+  object-fit: cover;
+  border-radius: 24px;
+  opacity: 0.95;
+}
+
+  .hero-image {
+    order: 2;
+  }
+
+  .hero-image img {
+    margin-bottom: 32px;
+  }
+
+
+/* ============================= */
+/*          SCROLL-TO-TOP        */
+/* ============================= */
+
+.scroll-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+  background: var(--card);          /* gleiche Farbe wie Panels/Cards */
+  border: 2px solid var(--outline); /* exakt wie bei Buttons, Tags, Cards */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: var(--shadow);        /* weicher warmer Shadow */
+  opacity: 0;
+  pointer-events: none;
+
+  cursor: pointer;
+  transition:
+    opacity .3s ease,
+    transform .3s ease,
+    background .3s ease,
+    box-shadow .3s ease,
+    border-color .3s ease;
+}
+
+/* sichtbar */
+.scroll-top-btn.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Minimaler Pfeil – kleiner, elegant */
+.arrow-up {
+  width: 10px;
+  height: 10px;
+
+  border-left: 2.2px solid var(--text);
+  border-bottom: 2.2px solid var(--text);
+
+  transform: rotate(135deg);
+  margin-top: 1px;   /* 👈 optisches Zentrieren */
+}
+
+
+/* Lightmode Hover */
+html:not(.dark) .scroll-top-btn:hover {
+  background: color-mix(in oklab, var(--card) 80%, var(--accent) 10%);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(143,121,111,0.25);
+}
+
+/* ============================= */
+/*           DARK MODE           */
+/* ============================= */
+
+/* leicht hellere berry Kugel, damit sie sich abhebt */
+html.dark .scroll-top-btn {
+  background: #34202c;
+  border: 2px solid var(--outline);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.6);
+}
+
+/* weißer Pfeil im Darkmode */
+html.dark .arrow-up {
+  border-left-color: #fff;
+  border-bottom-color: #fff;
+}
+
+/* Darkmode Hover – etwas heller */
+html.dark .scroll-top-btn:hover {
+  background: #4a2b3c;
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.7);
+}
+
+
+/* ============================= */
+/*         SECTION HEAD          */
+/* ============================= */
+
+section{
+  padding-top:100px;
+  padding-bottom:80px;
+}
+
+.section-head h2{
+  font-size:clamp(28px,4vw,38px);
+  font-weight:800;
+  color:var(--text);
+  margin-bottom:1rem;
+}
+
+/* ============================= */
+/*           ABOUT ME            */
+/* ============================= */
+
+
+.about-inner {
+  max-width: 720px;
+}
+
+.about-inner h2 {
+  font-size: clamp(32px, 4vw, 40px);
+  margin-bottom: 4px;
+}
+
+/* Akzentlinie */
+.about-divider {
+  width: 64px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin: 8px 0 28px;
+}
+
+.about-lead {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 22px;
+  line-height: 1.7;
+}
+
+.about-inner p {
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+/* handschriftlicher Akzent */
+.about-hand {
+  font-family: 'Caveat', cursive;
+  color: var(--accent);
+  font-size: 1.28em;
+  white-space: nowrap;
+}
+
+
+/* ============================= */
+/*       PROJECTS – GRID         */
+/* ============================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:34px;
+}
+
+/* ============================= */
+/*        PROJECT CARD           */
+/* ============================= */
+
+.card {
+  position: relative;
+  background: var(--card);
+  border: 2px solid var(--outline);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 12px 26px rgba(143,121,111,0.18);
+
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity .35s ease,
+    transform .35s ease,
+    box-shadow .35s ease,
+    border-color .35s ease;
+}
+
+.card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tag-list {
+  margin-top: 8px;
+  gap: 6px;
+}
+
+.card-actions {
+  margin-top: 14px;
+}
+
+.card-actions .btn {
+  padding: 9px 16px;
+  font-size: 0.85rem;
+}
+
+
+/* ============================= */
+/*       LIGHTMODE HOVER         */
+/* ============================= */
+
+html:not(.dark) .card:hover {
+  transform: translateY(-6px) scale(1.015);
+  border-color: var(--accent);
+
+  /* gleiche Struktur wie DARKMODE (2 shadows), aber in light Farben */
+  box-shadow:
+    0 18px 32px rgba(143, 121, 111, 0.22),  /* warm shadow */
+    0 10px 20px rgba(0, 0, 0, 0.18);        /* deeper shadow */
+}
+
+html:not(.dark) .tag:hover {
+  background: #fdf8f8;
+  color: var(--text);
+  border-color: var(--accent);
+  box-shadow: 0 2px 0 rgba(230, 122, 142, 0.18);
+}
+
+
+
+/* ============================= */
+/*         PROJECT THUMB         */
+/* ============================= */
+.thumb{
+  aspect-ratio:16/9;
+  background:#FFEFE9;
+  border:2px solid var(--outline);
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  font-size:0.95rem;
+  color:var(--muted);
+  margin-bottom:0.75rem;
+  box-shadow:0 4px 12px rgba(143,121,111,0.18);
+}
+
+/* ============================= */
+/*           PROJECT BADGE       */
+/* ============================= */
+
+.badge{
+  position:absolute;
+  top:12px;
+  left:12px;
+  background:var(--accent);
+  color:#fff;
+  padding:5px 12px;
+  border-radius:999px;
+  font-size:0.72rem;
+  font-weight:700;
+  border:2px solid var(--outline);
+  box-shadow:0 3px 0 rgba(143,121,111,0.25);
+}
+
+/* ============================= */
+/*             TAGS              */
+/* ============================= */
+
+.tag-list {
+  margin-top: 8px;
+  margin-bottom: 18px; /* 👈 NEU – Abstand zu Buttons */
+  gap: 6px;
+}
+
+
+.tag{
+  font-size:0.72rem;
+  padding:4px 10px;
+  border-radius:999px;
+  border:2px solid var(--outline);
+  background:#FFF7F2;
+  color:var(--text);
+  font-weight:600;
+  box-shadow:0 2px 0 rgba(143,121,111,0.22);
+}
+
+/* ============================= */
+/*        CONTACT SECTION        */
+/* ============================= */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 7vw, 96px);
+  align-items: start;
+}
+
+/* TEXTBLOCK */
+.contact-text h2 {
+  font-size: clamp(34px, 4vw, 44px);
+  margin-bottom: 2px; /* fast direkt am Balken */
+}
+
+.contact-divider {
+  width: 72px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin: 4px 0 22px; /* 👈 sehr nah am Text */
+}
+
+
+
+.contact-lead {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.contact-text p {
+  max-width: 46ch;
+  color: var(--muted);
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+.contact-soft {
+  opacity: 0.9;
+}
+
+/* HANDWRITTEN NOTE */
+.hand {
+  font-family: 'Caveat', cursive;
+  color: var(--accent);
+  font-size: 1.05em;
+  margin-left: 6px;
+  white-space: nowrap;
+}
+
+.contact-illustration {
+  display: block;
+  margin-top: 24px;
+  width: 270px;        /* 👈 Desktop-Größe */
+  opacity: 0.85;
+}
+
+
+/* FORMULAR */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 60px;
+  margin-left: 24px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 16px;
+  border: 2px solid var(--outline);
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.contact-form textarea {
+  min-height: 190px;
+  resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(230,122,142,0.18);
+}
+
+/* BUTTON */
+.contact-form button {
+  align-self: flex-start;
+  margin-top: 12px;
+  padding: 14px 30px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.contact-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(230,122,142,0.35);
+}
+
+  .contact-form {
+    margin-left: 0;
+    margin-top: 24px;
+  }
+
+  .contact-form button {
+    align-self: stretch;
+  }
+
+
+label {
+  font-size:0.95rem;
+  font-weight:600;
+  color:var(--text);
+  margin-bottom:4px;
+  display:block;
+}
+
+input,
+textarea{
+  width:100%;
+  padding:14px 16px;
+  border-radius:14px;
+  border:2px solid var(--outline);
+  background:#fff;
+  color:var(--text);
+  font-size:1rem;
+  font-family:'DM Sans', sans-serif;
+  transition:border-color .25s ease, box-shadow .25s ease;
+}
+
+input:focus,
+textarea:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 4px rgba(230,122,142,0.25);
+  outline:none;
+}
+
+textarea{
+  min-height:130px;
+  resize:vertical;
+}
+
+/* SEND BUTTON */
+form .btn.primary{
+  margin-top:10px;
+  background:var(--accent);
+  border:2px solid var(--outline);
+  padding:14px 20px;
+  font-weight:600;
+  color:white;
+  border-radius:14px;
+  transition:all .25s ease;
+}
+
+form .btn.primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 26px rgba(143,121,111,0.22);
+}
+
+/* ============================= */
+/*             FOOTER            */
+/* ============================= */
+
+footer {
+  text-align: center;
+  padding-top: clamp(32px, 5vw, 56px);     /* deutlich höher */
+  padding-bottom: clamp(24px, 4vw, 40px);  /* kaum Leerraum unten */
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.footer-inner{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:22px;
+}
+
+.footer-name{
+  font-size:0.9rem;
+  opacity:0.85;
+}
+
+.footer-links{
+  display:flex;
+  gap:24px;
+}
+
+.footer-icon img{
+  width:26px;
+  height:26px;
+  opacity:0.85;
+  transition:all .25s ease;
+  filter:brightness(0) saturate(100%) invert(34%) sepia(16%) saturate(300%) hue-rotate(340deg);
+}
+
+html:not(.dark) .footer-icon img:hover {
+  transform: translateY(-3px) scale(1.06);
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* softer neutral glow */
+  transition: all 0.35s ease;
+}
+
+/* ============================= */
+/*        SCROLL EFFECTS         */
+/* ============================= */
+
+.reveal-on-scroll{
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .45s ease, transform .45s ease;
+  will-change:opacity,transform;
+}
+
+.reveal-on-scroll.is-visible{
+  opacity:1;
+  transform:none;
+}
+
+.fade-in-on-load{
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeSlideUp 1s ease-out forwards;
+  animation-delay:.2s;
+}
+
+@keyframes fadeSlideUp{
+  0%{opacity:0;transform:translateY(20px);}
+  100%{opacity:1;transform:translateY(0);}
+}
+
+/* ============================= */
+/*           SCROLLBAR           */
+/* ============================= */
+
+::-webkit-scrollbar{
+  width:10px;
+}
+
+::-webkit-scrollbar-track{
+  background:#FFEFE9;
+  border-left:1px solid #F0DCD3;
+}
+
+::-webkit-scrollbar-thumb{
+  background:var(--accent);
+  border-radius:99px;
+  border:2px solid #FFEFE9;
+}
+
+  .hero-media{
+    min-height:350px;
+    margin-top:30px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  section{
+    padding-top:70px;
+    padding-bottom:60px;
+  }
+
+/* ============================= */
+/*          DARK MODE            */
+/* ============================= */ 
+
+html.dark {
+  /* Deep Berry Hintergrund */
+  --bg: #14090e;
+
+  /* Panels / Cards – deep berry soft */
+  --panel: #1c1016;
+  --card: #1c1016;
+
+  /* Textfarben */
+  --text: #f7e5ef;
+  --muted: #d7b3c4;
+
+  /* Rosa Akzente bleiben */
+  --accent: #dd9fba;
+  --accent-2: #811c48;
+
+  /* Outline / Rahmen */
+  --outline: #5a2a42;
+
+  /* Schatten etwas dunkler */
+  --shadow: 0 10px 30px rgba(0,0,0,0.55);
+}
+
+/* Hintergrund */
+html.dark body {
+  background: linear-gradient(180deg, #14090e 0%, #0d060a 100%);
+
+/*Scroll*/
+body.dark header.scrolled-glass {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+  
+}
+
+/* Inputs: etwas heller, soft berry */
+html.dark input,
+html.dark textarea {
+  background: #2d1c25;
+  color: var(--text);
+  border-color: var(--outline);
+}
+
+/* Darkmode: Tags in Soft Dusty Pink */
+html.dark .tag {
+  background: #c986a5;
+  color: #ffffff;
+  border-color: var(--outline);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+}
+
+/* Darkmode: Projektkarten etwas rosa-toniger machen */
+html.dark .card {
+  background: #2a1822;   /* soft berry rosa */
+  border-color: var(--outline);
+  box-shadow: var(--shadow);
+}
+
+html.dark .accent-name {
+  text-shadow: 0 4px 14px rgba(185, 116, 147, 0.35);
+}
+
+/* Darkmode: Hover Effekt für Projektkarten */
+html.dark .card:hover {
+  transform: translateY(-6px) scale(1.015);
+  border-color: var(--accent);
+  box-shadow:
+    0 18px 32px rgba(185, 116, 147, 0.25),
+    0 10px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* Darkmode Scrollbar */
+html.dark ::-webkit-scrollbar-track {
+  background: var(--panel);
+  border-left: 1px solid transparent;
+}
+
+html.dark .contact-note {
+  color: #d7b3c4; /* soft berry muted */
+  opacity: 0.95;
+}
+
+
+html.dark *,
+html:not(.dark) * {
+  transition: background .35s ease, color .35s ease, border-color .35s ease;
+}
+
+
+html.dark .badge {
+  background: #b97493;   /* passt perfekt zu tags */
+  color: #ffffff;
+  border-color: var(--outline);
+}
+
+/* ============================= */
+/*     DARKMODE SOCIAL ICONS     */
+/* ============================= */
+
+/* GitHub + LinkedIn Icons im Darkmode in Soft Dusty Pink */
+html.dark .footer-icon img {
+  filter: brightness(0) saturate(100%) invert(82%) sepia(17%) saturate(650%) hue-rotate(289deg) brightness(95%) contrast(92%);
+  opacity: 0.95;
+}
+
+/* Hover Effekt im Darkmode: etwas heller Soft Pink */
+html.dark .footer-icon img:hover {
+  filter: brightness(0) saturate(100%) invert(88%) sepia(20%) saturate(700%) hue-rotate(289deg) brightness(105%) contrast(95%);
+}
+
+
+html.dark .thumb {
+  background: #3a2130;  /* etwas heller, warm-rosa */
+  border-color: var(--outline);
+}
+
+html.dark .tag:hover {
+  background: #d49bb7;
+  color: #ffffff;
+}
+
+/* Scrollbar */
+html.dark ::-webkit-scrollbar-track {
+  background: var(--panel);
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-color: var(--panel);
+}
+
+html.dark .footer-icon img {
+  filter: brightness(0) saturate(100%) invert(82%) sepia(17%) saturate(650%) hue-rotate(289deg) brightness(95%) contrast(92%);
+  opacity: 0.95;
+  transition: all 0.35s ease;
+}
+
+/* Hover: Soft White-Pink (#f5dce6) */
+html.dark .footer-icon img:hover {
+  filter: brightness(0) saturate(100%) invert(93%) sepia(7%) saturate(264%) hue-rotate(285deg) brightness(105%) contrast(96%);
+  opacity: 1;
+  transform: translateY(-3px) scale(1.06);
+}
+/* ============================= */
+/*       THEME TOGGLE (SVG)      */
+/* ============================= */
+
+/* Hover – wie Nav */
+.theme-toggle:hover {
+  background: var(--card);
+  border-color: var(--outline);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(143,121,111,0.18);
+}
+
+/* ============================= */
+/*       THEME TOGGLE (SVG)      */
+/* ============================= */
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: transparent;
+  border: 2px solid transparent;
+
+  cursor: pointer;
+  transition: all .25s ease;
+  position: relative;
+}
+
+.theme-toggle:hover {
+  background: var(--card);
+  border-color: var(--outline);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(143,121,111,0.18);
+}
+
+/* Beide Icons übereinander */
+.theme-toggle img {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  opacity: 0;
+  transition: opacity .35s ease, transform .35s ease, color .35s ease;
+}
+
+/* ============================= */
+/*  ICON COLORS & VISIBLE STATES */
+/* ============================= */
+
+/* ---------- LIGHTMODE ---------- */
+
+/* Mond sichtbar */
+html:not(.dark) .icon-moon {
+  opacity: 1;
+  transform: rotate(0deg);
+  color: #6E6159;      /* Muted Brown */
+}
+
+/* Sonne unsichtbar */
+html:not(.dark) .icon-sun {
+  opacity: 0;
+  transform: rotate(-180deg);
+  color: transparent;
+}
+
+/* ---------- DARKMODE ---------- */
+
+/* Sonne sichtbar */
+html.dark .icon-sun {
+  opacity: 1;
+  transform: rotate(0deg);
+  color: #F7E5EF;      /* Hellrosa */
+}
+
+/* Mond unsichtbar */
+html.dark .icon-moon {
+  opacity: 0;
+  transform: rotate(180deg);
+  color: transparent;
+}
+
+/* WebKit */
+::-webkit-scrollbar {
+  width: 0;
+}
+
+body:hover ::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 120, 180, 0.6);
+  border-radius: 8px;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: none;
+}
+
+html:hover {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,120,180,0.6) transparent;
+}
+
+
+/* ============================= */
+/*     PROJECT DETAIL PAGE      */
+/* ============================= */
+
+.projects-page {
+  padding-top: 0;        /* 🔥 DAS zieht alles hoch */
+  padding-bottom: 120px;
+}
+
+.projects-page section {
+  padding-top: 0 !important;
+  padding-bottom: 0;
+}
+
+/* Back-Link */
+.back-link {
+  display: inline-block;
+  margin-bottom: 48px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  transition: transform .25s ease;
+}
+
+.back-link:hover {
+  transform: translateX(-6px);
+}
+
+/* GRID */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px;
+}
+
+.project-card {
+  min-height: 440px;   /* 👈 deutlich kompakter */
+  padding: 16px;       /* 👈 weniger Innenluft */
+  display: flex;
+  flex-direction: column;
+}
+
+
+.project-card p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+
+/* Action Buttons unten fixieren */
+.card-actions {
+  margin-top: auto;
+  padding-top: 6px; /* 👈 leichte Trennung */
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Secondary Button */
+.btn.secondary {
+  background: transparent;
+  border: 2px solid var(--outline);
+}
+
+/* ============================= */
+/*        PROJECT GRID PAGE      */
+/* ============================= */
+
+.projects-page {
+  padding-top: 140px;
+  padding-bottom: 120px;
+}
+
+/* GRID SYSTEM */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px;
+}
+
+/* PROJECT DETAIL CARD */
+.project-card {
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ACTION BUTTONS */
+.card-actions {
+  margin-top: auto;
+  display: flex;
+  gap: 14px;
+}
+
+/* SECONDARY BUTTON */
+.btn.secondary {
+  background: transparent;
+  border: 2px solid var(--outline);
+}
+
+
+#donut-loader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+
+  background: var(--loader-bg);
+}
+
+#donut-loader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+
+  background: var(--bg); /* 🔥 exakt Theme-Background */
+  
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+#donut-loader.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.donut-loader-video {
+  width: 500px;
+  height: auto;
+}
+
+
+body.dark {
+  --bg: #12070d;   /* berry / dunkel */
+}
+
+body.light {
+  --bg: #fff6f9;  /* hell */
+}
+
+body {
+  background: var(--bg);
+}
+
+.project-card p {
+  flex-grow: 1;   /* 👈 zieht den Textbereich nach oben/unten */
+}
+
+.tag-list {
+  margin-top: 12px;
+  margin-bottom: 14px;   /* fixer Abstand zu Buttons */
+}
+
+.card-actions {
+  margin-top: auto;   /* 👈 zwingt Buttons nach unten */
+}
+
+/* ============================= */
+/*        FOOTER NAV LINK        */
+/* ============================= */
+
+/* ============================= */
+/*        BACK NAV LINK          */
+/* ============================= */
+
+.back-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: -20px;      /* 👈 näher an die Überschrift */
+  margin-bottom: 43px; /* 👈 weniger Abstand zu Cards */
+}
+
+
+.back-link-clean {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  color: var(--muted);
+  text-decoration: none;
+
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.back-link-clean .arrow {
+  font-size: 1.1rem;
+  transition: transform 0.25s ease;
+}
+
+.back-link-clean:hover {
+  color: var(--text);
+  transform: translateX(-4px);
+}
+
+.back-link-clean:hover .arrow {
+  transform: translateX(-4px);
+}
+
+/* ============================= */
+/*      PROJECTS PAGE HEADER     */
+/* ============================= */
+
+.projects-header {
+  margin-top: -100px;          /* 👈 nah an der Navbar */
+  margin-bottom: 24px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.projects-header h1 {
+  font-family: 'Rubik', sans-serif;
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 800;
+  color: var(--text);
+
+  transition:
+    font-size 0.3s ease,
+    opacity 0.3s ease;
+}
+
+/* kleiner & ruhiger beim Scrollen */
+body.page-scrolled .projects-header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  opacity: 0.75;
+}
+
+
+/* ============================= */
+/*           RESPONSIVE          */
+/* ============================= */
+
+/* ============================= */
+/*        DESKTOP ZOOM FIX       */
+/* ============================= */
+
+@media (min-width: 1200px) {
+  .zoom-wrap {
+    transform: scale(1.25);
+    transform-origin: top center;
+
+    /* Platz ausgleichen */
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+
+/* ============================= */
+/*   PROJECT CARDS – HOMEPAGE    */
+/* ============================= */
+
+body:not(.projects-page) .grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+body:not(.projects-page) .card {
+  padding: 18px;
+}
+
+body:not(.projects-page) .thumb {
+  aspect-ratio: 16 / 10;
+  margin-bottom: 0.75rem;
+}
+
+body:not(.projects-page) .card-actions {
+  margin-top: 12px;
+}
+
+/* ============================= */
+/*   EINHEITLICHE SECTION ABSTÄNDE */
+/* ============================= */
+
+section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
