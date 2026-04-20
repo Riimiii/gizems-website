@@ -1,0 +1,146 @@
+/* ================================================== */
+/*  BASE.CSS  —  Variablen · Reset · Schrift · Scroll */
+/* ================================================== */
+
+
+/* -------------------- Variablen -------------------- */
+
+:root {
+  /* Farben */
+  --bg:           #FFF7F2;
+  --panel:        #FFFFFF;
+  --text:         #2B2A28;
+  --muted:        #6E6159;
+  --accent:       #E67A8E;
+  --accent-2:     #D9C2A7;
+  --accent-soft:  color-mix(in oklab, var(--accent) 55%, transparent);
+  --card:         #FFF1EA;
+  --name:         #fdacbb;
+  --outline:      #6E6159;
+  --shadow:       0 10px 30px rgba(143, 121, 111, 0.15);
+
+  /* Layout */
+  --radius:        16px;
+  --gap:           1.5rem;
+  --header-height: 72px;
+  --b-big:         250px;
+  --b-mid:         150px;
+  --b-small:       120px;
+}
+
+
+/* -------------------- Reset -------------------- */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+html:hover {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(230, 122, 142, 0.5) transparent;
+}
+
+html, body {
+  cursor: default;
+}
+
+input, textarea {
+  cursor: text;
+}
+
+
+/* -------------------- Body -------------------- */
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #FFF7F2 0%, #FFEFE9 100%);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* -------------------- Scrhiften -------------------- */
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Rubik', sans-serif;
+}
+
+.motto {
+  font-family: 'Pacifico', cursive;
+}
+
+.brand.personal .name,
+.brand.personal .name-text,
+.brand.personal .big-g {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+
+/* -------------------- Container -------------------- */
+
+.container {
+  width: min(1100px, 96vw);
+  margin: auto;
+  padding-inline: clamp(28px, 6vw, 80px);
+}
+
+main.container {
+  padding-top: 0;
+}
+
+
+
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+body:hover ::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(230, 122, 142, 0.45);
+  border-radius: 999px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(230, 122, 142, 0.75);
+}
+
+/* -------------------- Scrollbar -------------------- */
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(230, 122, 142, 0.35) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(230, 122, 142, 0.35);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(230, 122, 142, 0.65);
+}

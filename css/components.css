@@ -1,0 +1,321 @@
+/* ============================= */
+/*   COMPONENTS.CSS              */
+/*   Buttons · Cards · Tags      */
+/*   Badges · Thumb              */
+/*   Scroll-Top · Theme-Toggle   */
+/* ============================= */
+
+
+/* ============================= */
+/*           BUTTONS             */
+/* ============================= */
+
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: var(--card);
+  border: 2px solid var(--outline);
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  transition: all .25s ease;
+}
+
+.btn.primary {
+  background: var(--accent);
+  border: 2px solid var(--outline);
+  color: #fff;
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 2px solid var(--outline);
+}
+
+.btn.tertiary {
+  background: transparent;
+  border: 2px dashed var(--outline);
+  color: var(--muted);
+}
+
+.btn.tertiary:hover {
+  color: var(--text);
+  border-style: solid;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(143, 121, 111, 0.22);
+}
+
+
+/* ============================= */
+/*             CARDS             */
+/* ============================= */
+
+.card {
+  position: relative;
+  background: var(--card);
+  border: 2px solid var(--outline);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 12px 26px rgba(143, 121, 111, 0.18);
+
+  opacity: 0;                       /* Start: unsichtbar (wird per JS aktiviert) */
+  transform: translateY(12px);
+  transition:
+    opacity .35s ease,
+    transform .35s ease,
+    box-shadow .35s ease,
+    border-color .35s ease;
+}
+
+.card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-actions {
+  margin-top: 14px;
+}
+
+.card-actions .btn {
+  padding: 9px 16px;
+  font-size: 0.85rem;
+}
+
+/* Lightmode Hover */
+html:not(.dark) .card:hover {
+  transform: translateY(-6px) scale(1.015);
+  border-color: var(--accent);
+  box-shadow:
+    0 18px 32px rgba(143, 121, 111, 0.22),
+    0 10px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* Mehr Innenabstand auf Homepage (nicht Projektseite) */
+body:not(.projects-page) .card {
+  padding: 18px;
+}
+
+body:not(.projects-page) .card-actions {
+  margin-top: 12px;
+}
+
+
+/* ============================= */
+/*         PROJECT THUMB         */
+/* ============================= */
+
+.thumb {
+  aspect-ratio: 16/9;
+  background: #FFEFE9;
+  border: 2px solid var(--outline);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+  box-shadow: 0 4px 12px rgba(143, 121, 111, 0.18);
+}
+
+/* Breiteres Format auf Homepage */
+body:not(.projects-page) .thumb {
+  aspect-ratio: 16 / 10;
+  margin-bottom: 0.75rem;
+}
+
+
+/* ============================= */
+/*           PROJECT BADGE       */
+/* ============================= */
+
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--accent);
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border: 2px solid var(--outline);
+  box-shadow: 0 3px 0 rgba(143, 121, 111, 0.25);
+}
+
+
+/* ============================= */
+/*             TAGS              */
+/* ============================= */
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  margin-bottom: 18px;
+  gap: 10px;
+}
+
+.tag {
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 2px solid var(--outline);
+  background: #FFF7F2;
+  color: var(--text);
+  font-weight: 600;
+  box-shadow: 0 2px 0 rgba(143, 121, 111, 0.22);
+}
+
+/* Lightmode Tag-Hover */
+html:not(.dark) .tag:hover {
+  background: #fdf8f8;
+  color: var(--text);
+  border-color: var(--accent);
+  box-shadow: 0 2px 0 rgba(230, 122, 142, 0.18);
+}
+
+
+/* ============================= */
+/*          SCROLL-TO-TOP        */
+/* ============================= */
+
+.scroll-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+  background: var(--card);
+  border: 2px solid var(--outline);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: var(--shadow);
+  opacity: 0;                       /* Standardmäßig unsichtbar */
+  pointer-events: none;
+
+  cursor: pointer;
+  transition:
+    opacity .3s ease,
+    transform .3s ease,
+    background .3s ease,
+    box-shadow .3s ease,
+    border-color .3s ease;
+}
+
+/* Sichtbar */
+.scroll-top-btn.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Pfeil nach oben */
+.arrow-up {
+  width: 10px;
+  height: 10px;
+  border-left: 2.2px solid var(--text);
+  border-bottom: 2.2px solid var(--text);
+  transform: rotate(135deg);
+  margin-top: 1px;
+}
+
+/* Lightmode Hover */
+html:not(.dark) .scroll-top-btn:hover {
+  background: color-mix(in oklab, var(--card) 80%, var(--accent) 10%);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(143, 121, 111, 0.25);
+}
+
+
+/* ============================= */
+/*         THEME-TOGGLE          */
+/* ============================= */
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: transparent;
+  border: 2px solid transparent;
+
+  cursor: pointer;
+  transition: all .25s ease;
+  position: relative;
+}
+
+.theme-toggle:hover {
+  background: var(--card);
+  border-color: var(--outline);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(143, 121, 111, 0.18);
+}
+
+/* Beide Icons übereinander */
+.theme-toggle img {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  opacity: 0;
+  transition: opacity .4s ease, transform .4s ease;
+}
+
+/* LIGHTMODE: Mond-Icon eindrehen */
+html:not(.dark) .icon-moon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* LIGHTMODE: Sonnen-Icon wegdrehen */
+html:not(.dark) .icon-sun {
+  opacity: 0;
+  transform: rotate(-180deg);
+}
+
+/* DARKMODE: Sonnen-Icon eindrehen */
+html.dark .icon-sun {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* DARKMODE: Mond-Icon wegdrehen */
+html.dark .icon-moon {
+  opacity: 0;
+  transform: rotate(180deg);
+  color: transparent;
+}
+
+/* ============================= */
+/*   THEME TOGGLE ANIMATION      */
+/* ============================= */
+
+@keyframes spin-out {
+  from { transform: rotate(0deg);   opacity: 1; }
+  to   { transform: rotate(180deg); opacity: 0; }
+}
+
+@keyframes spin-in {
+  from { transform: rotate(-180deg); opacity: 0; }
+  to   { transform: rotate(0deg);    opacity: 1; }
+}
+
+.theme-toggle img.spin-out {
+  animation: spin-out 0.2s ease forwards;
+}
+
+.theme-toggle img.spin-in {
+  animation: spin-in 0.2s ease forwards;
+}

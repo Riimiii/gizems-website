@@ -13,16 +13,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&
-  family=Rubik:wght@600;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Rubik:wght@600;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
 
+  <!-- Dark Mode sofort setzen (verhindert Flackern) -->
+  <script>
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
 </head>
 
-<body class="projects-page-body">
+<body>
 
-<!-- ================= HEADER (IDENTISCH) ================= -->
+<!-- HEADER -->
 <header class="site-header">
   <div class="nav">
 
@@ -44,28 +56,24 @@
         <img src="assets/sun.svg" class="icon-sun" alt="Lightmode Icon">
         <img src="assets/moon.svg" class="icon-moon" alt="Darkmode Icon">
       </button>
-      
 
-      <nav class="nav-right">
-        <a href="index.html#ueber-mich">Über mich</a>
-        <a href="index.html#projekte">Projekte</a>
-        <a href="index.html#kontakt">Kontakt</a>
-      </nav>
-      
+      <a href="index.html#ueber-mich">Über mich</a>
+      <a href="index.html#projekte">Projekte</a>
+      <a href="index.html#kontakt">Kontakt</a>
 
     </nav>
 
   </div>
 </header>
 
-<!-- ================= MAIN ================= -->
+
+<!-- MAIN -->
 <main class="container projects-page">
 
-  
   <header class="projects-header">
     <h1>Meine Projekte</h1>
   </header>
-  
+
   <div class="back-nav">
     <a href="index.html" class="back-link-clean">
       <span class="arrow">←</span>
@@ -75,186 +83,137 @@
 
   <!-- PROJECT GRID -->
   <section class="projects-section">
-
     <div class="projects-grid">
 
       <!-- PROJECT 1 -->
       <article class="card project-card reveal-on-scroll">
         <div class="badge">2025</div>
-
         <div class="thumb">Coming Soon</div>
-
         <h3>Portfolio Website</h3>
-
         <p>
           Persönliche Portfolio-Seite mit Soft-Berry-Design,
           Dark- und Light-Mode sowie animierten UI-Komponenten.
           Fokus lag auf sauberem CSS-System und stabiler Theme-Logik.
         </p>
-
         <div class="tag-list">
           <span class="tag">HTML</span>
           <span class="tag">CSS</span>
           <span class="tag">JavaScript</span>
         </div>
-
         <div class="card-actions">
-          <a href="#" class="btn primary">Live Demo</a>
+          <a href="portfolio.html" class="btn primary">Mehr erfahren</a>
           <a href="#" class="btn secondary">Source Code</a>
-          <a href="project-portfolio.html" class="btn tertiary">Mehr</a>
-        </div>        
+        </div>
       </article>
 
+      <!-- PROJECT 2 -->
       <article class="card project-card reveal-on-scroll">
         <div class="badge">2024</div>
-      
         <div class="thumb">Coming Soon</div>
-      
-        <h3>Webseite mit 10</h3>
-      
+        <h3>Webseite mit 9</h3>
         <p>
           Erste eigene Webseite mit mehreren Unterseiten.
           Fokus lag auf HTML-Struktur, einfachen Layouts
           und grundlegender Navigation.
         </p>
-      
         <div class="tag-list">
           <span class="tag">HTML</span>
           <span class="tag">CSS</span>
         </div>
-      
-       <div class="card-actions">
-        <a href="./websitemit10.html" class="btn secondary">Live Demo</a>
-
-        <a href="#" class="btn secondary">
-          Source Code
-        </a>
-
-        <a href="./websitemit10.html" class="btn tertiary">
-          Mehr
-        </a>
-      </div>
-
+        <div class="card-actions">
+          <a href="websitemit10.html" class="btn primary">Mehr erfahren</a>
+          <a href="#" class="btn secondary">Source Code</a>
+        </div>
       </article>
-      
+
+      <!-- PROJECT 3 -->
       <article class="card project-card reveal-on-scroll">
         <div class="badge">2024</div>
-      
         <div class="thumb">Coming Soon</div>
-      
-        <h3>Pookie - Calculator</h3>
-      
+        <h3>Taschenrechner</h3>
         <p>
           Einfacher Web-Taschenrechner mit Grundrechenarten.
           Ziel war es, JavaScript-Logik, Events und Zustände
           besser zu verstehen.
         </p>
-      
         <div class="tag-list">
           <span class="tag">HTML</span>
           <span class="tag">CSS</span>
           <span class="tag">JavaScript</span>
         </div>
-      
         <div class="card-actions">
-          <a href="#" class="btn primary">Live Demo</a>
+          <a href="taschenrechner.html" class="btn primary">Mehr erfahren</a>
           <a href="#" class="btn secondary">Source Code</a>
-          <a href="pookie-calculator.html" class="btn tertiary">Mehr</a>      
         </div>
       </article>
 
+      <!-- PROJECT 4 -->
       <article class="card project-card reveal-on-scroll">
         <div class="badge">2025</div>
-      
         <div class="thumb">Coming Soon</div>
-      
         <h3>Donut in Blender</h3>
-      
         <p>
           3D-Donut-Projekt in Blender zum Einstieg in
           Modeling, Materialien, Licht und Animation.
           Wird als Loader auf der Webseite genutzt.
         </p>
-      
         <div class="tag-list">
           <span class="tag">Blender</span>
           <span class="tag">3D</span>
           <span class="tag">Animation</span>
         </div>
-      
         <div class="card-actions">
-          <a href="#" class="btn primary">Preview</a>
-          <a href="project-portfolio.html" class="btn tertiary">Mehr</a>
+          <a href="donut.html" class="btn primary">Mehr erfahren</a>
         </div>
       </article>
 
-
+      <!-- PROJECT 5 -->
       <article class="card project-card reveal-on-scroll">
         <div class="badge">2024</div>
-      
         <div class="thumb">Coming Soon</div>
-      
         <h3>Snake Game</h3>
-      
         <p>
           Klassisches Snake-Spiel im Browser.
           Umsetzung von Spiellogik, Tastatur-Steuerung
           und einfachem Game-Loop mit JavaScript.
         </p>
-      
         <div class="tag-list">
           <span class="tag">JavaScript</span>
           <span class="tag">Game Logic</span>
         </div>
-      
         <div class="card-actions">
-          <a href="#" class="btn primary">Demo</a>
+          <a href="snake.html" class="btn primary">Mehr erfahren</a>
           <a href="#" class="btn secondary">Source Code</a>
-          <a href="project-portfolio.html" class="btn tertiary">Mehr</a>
         </div>
       </article>
-      
 
-      <!-- PROJECT 2 -->
+      <!-- PROJECT 6 -->
       <article class="card project-card reveal-on-scroll">
         <div class="badge">Fertig</div>
-
         <div class="thumb">Coming Soon</div>
-
         <h3>Godot 2D Game</h3>
-
         <p>
           2D-Spiel-Prototyp zum Lernen von Game-Logik,
           Szenenaufbau und Kollisionssystemen.
           Der Fokus lag bewusst auf Mechaniken statt Grafik.
         </p>
-
         <div class="tag-list">
           <span class="tag">Godot</span>
           <span class="tag">GDScript</span>
         </div>
-
         <div class="card-actions">
-          <a href="#" class="btn primary">Demo</a>
+          <a href="godot.html" class="btn primary">Mehr erfahren</a>
           <a href="#" class="btn secondary">Source Code</a>
-          <a href="project-portfolio.html" class="btn tertiary">Mehr</a>
         </div>
       </article>
 
     </div>
   </section>
 
-
-  <script>
-    document.documentElement.classList.toggle(
-      'dark',
-      localStorage.getItem('theme') === 'dark'
-    );
-  </script>
-  
 </main>
 
-<!-- ================= FOOTER (OPTIONAL) ================= -->
+
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
 
@@ -262,32 +221,20 @@
 
     <div class="footer-links">
       <a href="https://github.com/Riimiii" target="_blank" class="footer-icon">
-        <img src="assets/GitHub.svg" alt="GitHub">
+        <img src="assets/github.svg" alt="GitHub">
       </a>
-
       <a href="https://www.linkedin.com/in/gizem-g%C3%BCney-5b8613396/" target="_blank" class="footer-icon">
-        <img src="assets/LinkedIn.svg" alt="LinkedIn">
+        <img src="assets/linkedin.svg" alt="LinkedIn">
       </a>
     </div>
 
   </div>
 </footer>
 
+<!-- Scroll-to-Top -->
 <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Nach oben scrollen">
   <span class="arrow-up"></span>
 </button>
-
-<!-- DONUT LOADER -->
-<div id="donut-loader" aria-hidden="true">
-  <video
-    src="assets/Donut/donut.webm"
-    muted
-    playsinline
-    class="donut-loader-video">
-  </video>
-</div>
-
-
 
 <script src="script.js"></script>
 </body>

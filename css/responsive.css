@@ -1,0 +1,175 @@
+/* ============================= */
+/*   RESPONSIVE.CSS              */
+/*   Tablet  · Mobile            */
+/* ============================= */
+
+
+/* ============================= */
+/*   TABLET  (max. 900px)        */
+/* ============================= */
+
+@media (max-width: 900px) {
+
+  /* Hero: untereinander statt nebeneinander */
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+
+  .hero-image {
+    order: -1;               /* Bild über dem Text */
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-image img {
+    max-width: 220px;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-eyebrow {
+    font-size: 26px;
+  }
+
+  /* Projekte: 2 Spalten statt 3 */
+  body:not(.projects-page) .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  /* Kontakt: untereinander */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .contact-form {
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .contact-illustration {
+    width: 220px;
+  }
+
+  /* Nav: etwas kompakter */
+  .nav {
+    padding: 0 20px;
+  }
+
+  .nav-right {
+    gap: 8px;
+  }
+
+  .nav-right a {
+    padding: 6px 10px;
+    font-size: 0.88rem;
+  }
+
+  /* Projektseite: 2 Spalten */
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+}
+
+
+/* ============================= */
+/*   MOBIL  (max. 600px)         */
+/* ============================= */
+
+@media (max-width: 600px) {
+
+  /* Projekte: 1 Spalte */
+  body:not(.projects-page) .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Projektseite: 1 Spalte */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  /* Hero */
+  .hero-image img {
+    max-width: 180px;
+  }
+
+  .hero-text {
+    font-size: 1rem;
+  }
+
+  /* Buttons nebeneinander → untereinander */
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Nav: Branding kleiner */
+  .brand.personal .big-g {
+    font-size: 1.8rem;
+  }
+
+  .brand.personal .name-text .first,
+  .brand.personal .name-text .last {
+    font-size: 0.88rem;
+  }
+
+  /* Nav-Links: nur Icons + weniger Text */
+  .nav-right a {
+    padding: 6px 8px;
+    font-size: 0.82rem;
+  }
+
+  /* Sections: weniger Abstand */
+  section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  /* Container: weniger Innenabstand */
+  .container {
+    padding-inline: clamp(16px, 4vw, 32px);
+  }
+
+  /* Footer */
+  .footer-links {
+    gap: 16px;
+  }
+
+  /* Scroll-Top Button */
+  .scroll-top-btn {
+    bottom: 18px;
+    right: 18px;
+    width: 34px;
+    height: 34px;
+  }
+
+  /* Kontakt-Illustration */
+  .contact-illustration {
+    width: 160px;
+  }
+
+  /* Projekt-Detailseiten */
+  .project-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .back-nav {
+    margin-bottom: 20px;
+  }
+
+}

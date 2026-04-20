@@ -1,0 +1,244 @@
+/* ============================= */
+/*   PAGES.CSS                   */
+/*   Projektübersicht · Cards    */
+/*   Detail-View · Loader        */
+/*   Back-Nav · Responsive       */
+/* ============================= */
+
+
+/* ============================= */
+/*     PROJEKTSEITE (WRAPPER)    */
+/* ============================= */
+
+.projects-page {
+  padding-bottom: 70px;
+}
+
+main.projects-page {
+  padding-top: 40px;
+}
+
+.projects-page section {
+  padding-top: 0 !important;
+  padding-bottom: 0;
+}
+
+
+/* ============================= */
+/*     PROJEKT-GRID              */
+/* ============================= */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+
+/* ============================= */
+/*     PROJEKTKARTE              */
+/* ============================= */
+
+.project-card {
+  min-height: 290px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Thumbnail in Projektkarte */
+.project-card .thumb {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  max-height: 240px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+}
+
+/* Titel */
+.project-card h3 {
+  margin-bottom: 6px;
+}
+
+/* Beschreibungstext */
+.project-card p {
+  font-size: 0.95rem;
+  line-height: 1.45;
+  margin-bottom: 8px;
+  flex-grow: 1;                    /* Füllt Platz → Buttons unten */
+}
+
+/* Buttons immer unten */
+.card-actions {
+  margin-top: auto;
+  padding-top: 2px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+
+/* ============================= */
+/*     ZURÜCK-NAVIGATION         */
+/* ============================= */
+
+/* Über den Cards */
+.back-nav {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 0;
+  margin-bottom: 32px;
+}
+
+/* Zurück-Link (alt) */
+.back-link {
+  display: inline-block;
+  margin-bottom: 48px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  transition: transform .25s ease;
+}
+
+.back-link:hover {
+  transform: translateX(-6px);
+}
+
+/* Zurück-Link (neu, clean) */
+.back-link-clean {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.back-link-clean:hover {
+  color: var(--text);
+  transform: translateX(-4px);
+}
+
+
+/* ============================= */
+/*     PROJEKTSSEITEN-HEADER     */
+/* ============================= */
+
+.projects-header {
+  margin-top: 0;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+/* Header schrumpft beim Scrollen */
+.projects-header.is-small h1 {
+  font-size: 2.2rem;
+  transform: translateY(-2px);
+}
+
+/* Noch ruhiger beim weiteren Scrollen */
+body.page-scrolled .projects-header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  opacity: 0.75;
+}
+
+
+/* ============================= */
+/*     PROJEKT-DETAILSEITE       */
+/* ============================= */
+
+.project-detail {
+  max-width: 800px;
+  margin: auto;
+}
+
+.project-hero h1 {
+  font-size: 2.6rem;
+  margin-bottom: 6px;
+}
+
+.project-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 40px;
+}
+
+.project-content h2 {
+  margin-top: 48px;
+  margin-bottom: 12px;
+}
+
+.project-content p,
+.project-content li {
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.project-links {
+  margin-top: 48px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.project-tech {
+  margin-top: 48px;
+}
+
+
+/* ============================= */
+/*         DONUT LOADER          */
+/* ============================= */
+
+#donut-loader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+
+  background: var(--bg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+#donut-loader.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.donut-loader-video {
+  width: 500px;
+  height: auto;
+}
+
+
+/* ============================= */
+/*          RESPONSIVE           */
+/* ============================= */
+
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .project-card {
+    min-height: auto;
+    padding: 14px;
+  }
+
+  .project-card .thumb {
+    height: 120px;
+  }
+}

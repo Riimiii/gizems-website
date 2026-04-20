@@ -1,0 +1,167 @@
+/* ============================= */
+/*   DARK-MODE.CSS               */
+/*   Alle html.dark Overrides    */
+/* ============================= */
+
+
+/* ============================= */
+/*   DARK MODE DESIGN-VARIABLEN  */
+/* ============================= */
+
+html.dark {
+  --bg: #14090e;
+  --panel: #1c1016;
+  --card: #1c1016;
+  --text: #f7e5ef;
+  --muted: #d7b3c4;
+  --accent: #dd9fba;
+  --accent-2: #811c48;
+  --outline: #5a2a42;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+}
+
+/* Darkmode Seitenhintergrund */
+html.dark body {
+  background: linear-gradient(180deg, #14090e 0%, #0d060a 100%);
+}
+
+
+/* ============================= */
+/*   GLOBALE TRANSITIONS         */
+/*   (sanfter Theme-Wechsel)     */
+/* ============================= */
+
+html.dark *,
+html:not(.dark) * {
+  transition: background .35s ease, color .35s ease, border-color .35s ease;
+}
+
+
+/* ============================= */
+/*   DARKMODE: INPUTS            */
+/* ============================= */
+
+html.dark input,
+html.dark textarea {
+  background: #2d1c25;
+  color: var(--text);
+  border-color: var(--outline);
+}
+
+
+/* ============================= */
+/*   DARKMODE: TAGS              */
+/* ============================= */
+
+html.dark .tag {
+  background: #c986a5;
+  color: #ffffff;
+  border-color: var(--outline);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+html.dark .tag:hover {
+  background: #d49bb7;
+  color: #ffffff;
+}
+
+
+/* ============================= */
+/*   DARKMODE: CARDS             */
+/* ============================= */
+
+html.dark .card {
+  background: #2a1822;
+  border-color: var(--outline);
+  box-shadow: var(--shadow);
+}
+
+html.dark .card:hover {
+  transform: translateY(-6px) scale(1.015);
+  border-color: var(--accent);
+  box-shadow:
+    0 18px 32px rgba(185, 116, 147, 0.25),
+    0 10px 20px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ============================= */
+/*   DARKMODE: BADGE             */
+/* ============================= */
+
+html.dark .badge {
+  background: #b97493;
+  color: #ffffff;
+  border-color: var(--outline);
+}
+
+
+/* ============================= */
+/*   DARKMODE: THUMBNAILS        */
+/* ============================= */
+
+html.dark .thumb {
+  background: #3a2130;
+  border-color: var(--outline);
+}
+
+
+/* ============================= */
+/*   DARKMODE: ACCENT NAME       */
+/* ============================= */
+
+html.dark .accent-name {
+  text-shadow: 0 4px 14px rgba(185, 116, 147, 0.35);
+}
+
+
+/* ============================= */
+/*   DARKMODE: SCROLL-TOP BTN    */
+/* ============================= */
+
+html.dark .scroll-top-btn {
+  background: #34202c;
+  border: 2px solid var(--outline);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.6);
+}
+
+html.dark .arrow-up {
+  border-left-color: #fff;
+  border-bottom-color: #fff;
+}
+
+html.dark .scroll-top-btn:hover {
+  background: #4a2b3c;
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.7);
+}
+
+
+/* ============================= */
+/*   DARKMODE: FOOTER ICONS      */
+/* ============================= */
+
+html.dark .footer-icon img {
+  filter: brightness(0) saturate(100%) invert(82%) sepia(17%) saturate(650%) hue-rotate(289deg);
+  opacity: 0.95;
+}
+
+html.dark .footer-icon img:hover {
+  filter: brightness(0) saturate(100%) invert(93%) sepia(7%) saturate(264%) hue-rotate(285deg);
+  opacity: 1;
+  transform: translateY(-3px) scale(1.06);
+}
+
+
+/* ============================= */
+/*   DARKMODE: SCROLLBAR         */
+/* ============================= */
+
+html.dark ::-webkit-scrollbar-track {
+  background: var(--panel);
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-color: var(--panel);
+}

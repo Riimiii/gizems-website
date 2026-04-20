@@ -1,0 +1,306 @@
+/* ============================= */
+/*   LAYOUT.CSS                  */
+/*   Header · Nav · Logo         */
+/*   Hero · Sections · Grid      */
+/* ============================= */
+
+
+/* ============================= */
+/*             HEADER            */
+/* ============================= */
+
+/* Grundzustand (oben, nicht gescrollt) */
+.site-header {
+  position: sticky;                /* Header bleibt beim Scrollen oben kleben */
+  top: 0;                          /* Startet ganz oben */
+  width: 100%;                     /* Volle Breite */
+  height: var(--header-height);    /* Feste Header-Höhe aus Variable */
+  z-index: 1000;                   /* Liegt über dem restlichen Inhalt */
+
+  background: transparent;         /* Anfangs kein Hintergrund */
+  backdrop-filter: blur(0px);      /* Kein Blur im Startzustand */
+  transition:                      /* Sanfte Übergänge beim Scrollen */
+    background 0.3s ease,
+    backdrop-filter 0.3s ease,
+    box-shadow 0.35s ease,
+    border-color 0.3s ease;
+}
+
+/* Scroll-Zustand (Glass-Effekt) */
+.site-header.scrolled-glass {
+  background: color-mix(in oklab, var(--bg) 50%, transparent); /* Halbtransparenter Hintergrund */
+  backdrop-filter: blur(18px);                                  /* Glas-/Blur-Effekt */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);                 /* Leichter Schatten beim Scrollen */
+}
+
+/* Lightmode Scroll-Shadow */
+body.light header.scrolled-glass {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Darkmode Header-Shadow beim Scrollen */
+body.dark header.scrolled-glass {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ============================= */
+/*              NAV              */
+/* ============================= */
+
+.nav {
+  position: relative;             /* Bezugspunkt für absolut positionierte Elemente */
+  height: var(--header-height);   /* Gleiche Höhe wie der Header */
+
+  display: flex;                  /* Flexbox: Logo links, Navigation rechts */
+  align-items: center;            /* Vertikal zentrieren */
+  justify-content: space-between; /* Logo links, Navigation rechts */
+  padding: 0 40px;                /* Innenabstand links und rechts */
+}
+
+/* Darkmode: halbtransparenter Header */
+html.dark header.scrolled-glass {
+  background: rgba(28, 16, 22, 0.72);
+}
+
+
+/* ============================= */
+/*     ORIGINAL HEADER LOGO      */
+/* ============================= */
+
+.brand.personal {
+  display: flex;                   /* Ordnet Logo-Elemente nebeneinander an */
+  align-items: center;             /* Zentriert alles vertikal */
+  gap: .6rem;                      /* Abstand zwischen Logo-Teilen */
+  text-decoration: none;           /* Entfernt Unterstreichung vom Link */
+  color: var(--text);              /* Standard-Textfarbe */
+}
+
+/* Wrapper */
+.brand.personal .name {
+  display: flex;                   /* Ordnet Buchstabe und Text als Einheit */
+  align-items: flex-start;         /* Text startet leicht oben ausgerichtet */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Großes rosa G */
+.brand.personal .big-g {
+  font-size: 2.35rem;              /* Größerer Anfangsbuchstabe */
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  margin-right: 2px;
+}
+
+/* Name rechts */
+.brand.personal .name-text {
+  display: flex;
+  flex-direction: column;          /* Vor- und Nachname untereinander */
+  justify-content: center;
+  margin-top: 1px;
+}
+
+/* Gizem – bold */
+.brand.personal .name-text .first {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: 0.3px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Güney – etwas softer */
+.brand.personal .name-text .last {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: var(--muted);
+  font-family: 'Poppins', sans-serif;
+}
+
+
+/* ============================= */
+/*         NAVIGATION            */
+/* ============================= */
+
+.nav-right {
+  display: flex;
+  gap: 18px;
+}
+
+.nav-right a {
+  text-decoration: none;
+  font-family: "DM Sans", sans-serif;
+  color: var(--muted);
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 2px solid transparent;   /* Platz für Hover-Rahmen ohne Springen */
+  transition: all 0.25s ease;
+}
+
+.nav-right a:hover {
+  background: var(--card);
+  border-color: var(--outline);
+  color: var(--text);
+  box-shadow: 0 6px 14px rgba(143, 121, 111, 0.18);
+}
+
+
+/* ============================= */
+/*         SECTION HEAD          */
+/* ============================= */
+
+section {
+  padding-top: 80px;               /* Gleichmäßiger Abstand oben */
+  padding-bottom: 80px;
+}
+
+.section-head h2 {
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+
+/* ============================= */
+/*         HERO (OLD)            */
+/* ============================= */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  align-items: center;
+  gap: clamp(1rem, 4vw, 3rem);
+  padding: 80px 0 60px;
+}
+
+.accent-name {
+  font-family: 'Pacifico', cursive !important;
+  font-size: clamp(48px, 9vw, 92px);
+  margin: 0;
+  margin-left: -40px;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+  font-weight: 400;
+  text-shadow: 0 3px 8px rgba(230, 122, 142, 0.15);
+}
+
+.motto {
+  font-size: 1.15rem;
+  margin: 10px 0 24px;
+  color: color-mix(in oklab, var(--accent) 70%, #443);
+}
+
+.hero p {
+  max-width: 60ch;
+  color: var(--muted);
+}
+
+.cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+
+/* ============================= */
+/*         HERO (NEU)            */
+/* ============================= */
+
+.hero-section {
+  min-height: 90vh;                /* Hero füllt fast den ganzen Viewport */
+  display: flex;
+  align-items: center;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: clamp(48px, 8vw, 120px);
+  align-items: center;
+}
+
+.hero-content {
+  order: 1;
+}
+
+.hero-image {
+  order: 2;
+  margin-top: 32px;
+  margin-left: -40px;
+}
+
+.hero-eyebrow {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--accent);
+  display: inline-block;
+  position: relative;
+  margin-bottom: 18px;
+  z-index: 1;
+}
+
+.hero-eyebrow::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  bottom: 12px;
+  width: calc(100% + 12px);
+  height: 15px;
+  background: var(--name);
+  opacity: 0.35;
+  border-radius: 2px;
+  z-index: -1;
+}
+
+.hero-text {
+  font-size: clamp(1.15rem, 2.2vw, 1.35rem);
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 36px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Bild rechts */
+.hero-image img {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1 / 1.1;
+  object-fit: cover;
+  border-radius: 24px;
+  opacity: 0.95;
+  margin-bottom: 32px;
+}
+
+/* Hero-Medienbereich */
+.hero-media {
+  min-height: 350px;
+  margin-top: 30px;
+}
+
+
+/* ============================= */
+/*           PROJECTS GRID       */
+/* ============================= */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Fallback */
+  gap: 34px;
+}
+
+/* Drei Spalten auf Startseite (nicht Projektübersicht) */
+body:not(.projects-page) .grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}

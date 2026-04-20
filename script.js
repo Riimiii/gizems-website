@@ -64,11 +64,33 @@ if (savedTheme === "dark") {
 
 if (themeToggle) {
   themeToggle.addEventListener("click", () => {
-    document.documentElement.classList.toggle("dark");
-    localStorage.setItem(
-      "theme",
-      document.documentElement.classList.contains("dark") ? "dark" : "light"
-    );
+    const isDark = document.documentElement.classList.contains("dark");
+    const outIcon = isDark
+      ? themeToggle.querySelector(".icon-sun")
+      : themeToggle.querySelector(".icon-moon");
+    const inIcon  = isDark
+      ? themeToggle.querySelector(".icon-moon")
+      : themeToggle.querySelector(".icon-sun");
+
+    // Gehendes Icon wegdrehen
+    outIcon.classList.add("spin-out");
+
+    setTimeout(() => {
+      // Theme wechseln
+      document.documentElement.classList.toggle("dark");
+      localStorage.setItem(
+        "theme",
+        document.documentElement.classList.contains("dark") ? "dark" : "light"
+      );
+      outIcon.classList.remove("spin-out");
+
+      // Neues Icon reindrehen
+      inIcon.classList.add("spin-in");
+      inIcon.addEventListener("animationend", () => {
+        inIcon.classList.remove("spin-in");
+      }, { once: true });
+
+    }, 200);
   });
 }
 
@@ -102,16 +124,14 @@ window.addEventListener("scroll", () => {
 });
 
 /* ============================= */
-/*         loa LOADER           */
+/*         DONUT LOADER           */
 /* ============================= */
 
 document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("donut-loader");
   const video = loader?.querySelector("video");
 
-  if (loader && document.body.contains(loader)) {
-    loader.classList.remove("active");
-  }  
+  if (loader) loader.classList.remove("active");
 
   document.querySelectorAll("a[href]").forEach(link => {
     const url = link.getAttribute("href");
@@ -168,28 +188,3 @@ scrollTopBtn.addEventListener("click", () => {
     behavior: "smooth"
   });
 });
-
-/*grr*/
-
-const projectsHeader = document.querySelector(".projects-header");
-
-if (document.body.classList.contains("projects-page-body") && projectsHeader) {
-  let isSmall = false;
-
-  const SHRINK_AT = 260;
-  const GROW_AT = 120;
-
-  window.addEventListener("scroll", () => {
-    const y = window.scrollY;
-
-    if (!isSmall && y > SHRINK_AT) {
-      projectsHeader.classList.add("is-small");
-      isSmall = true;
-    }
-
-    if (isSmall && y < GROW_AT) {
-      projectsHeader.classList.remove("is-small");
-      isSmall = false;
-    }
-  });
-}
