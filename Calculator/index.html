@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator | Gizem Güney</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,400&family=Rubik:wght@500;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <header class="navbar">
+        <div class="logo">Calculator</div>
+        <nav>
+            <a href="#calculator">Rechner</a>
+            <a href="#history">Verlauf</a>
+            <a href="#notes">Notizen</a>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <section class="calculator-card" id="calculator">
+
+            <div class="calculator-header">
+                <h1>Calculator</h1>
+                <div class="keyboard-badge">
+                    <span class="badge-dot"></span>
+                    Keyboard Ready
+                </div>
+            </div>
+
+            <div class="display">
+                <div class="previous-display" id="previous-display"></div>
+                <div class="current-display" id="current-display">0</div>
+            </div>
+
+            <div class="buttons">
+
+                <!-- Reihe 1 -->
+                <button class="danger" data-key="Escape" onclick="clearScreen()">AC</button>
+                <button class="danger" data-key="Backspace" onclick="deleteNumber()">DEL</button>
+                <button class="special" data-key="^" onclick="squareNumber()">x²</button>
+                <button class="special" onclick="squareRoot()">√x</button>
+
+                <!-- Reihe 2 -->
+                <button class="special" onclick="toggleSign()">±</button>
+                <button class="operator" data-key="%" onclick="chooseOperator('%')">%</button>
+                <button class="operator" data-key="/" onclick="chooseOperator('/')">÷</button>
+                <button class="operator" data-key="*" onclick="chooseOperator('*')">×</button>
+
+                <!-- Reihe 3 -->
+                <button data-key="7" onclick="appendNumber('7')">7</button>
+                <button data-key="8" onclick="appendNumber('8')">8</button>
+                <button data-key="9" onclick="appendNumber('9')">9</button>
+                <button class="operator" data-key="-" onclick="chooseOperator('-')">−</button>
+
+                <!-- Reihe 4 -->
+                <button data-key="4" onclick="appendNumber('4')">4</button>
+                <button data-key="5" onclick="appendNumber('5')">5</button>
+                <button data-key="6" onclick="appendNumber('6')">6</button>
+                <button class="operator" data-key="+" onclick="chooseOperator('+')">+</button>
+
+                <!-- Reihe 5 -->
+                <button data-key="1" onclick="appendNumber('1')">1</button>
+                <button data-key="2" onclick="appendNumber('2')">2</button>
+                <button data-key="3" onclick="appendNumber('3')">3</button>
+
+                <button class="equals" data-key="Enter" onclick="compute()">=</button>
+
+                <!-- Reihe 6 -->
+                <button data-key="0" onclick="appendNumber('0')">0</button>
+                <button data-key="." onclick="appendNumber('.')">.</button>
+
+            </div>
+
+        </section>
+
+        <section class="side-content">
+
+            <div class="panel" id="history">
+                <div class="panel-header">
+                    <h2>Verlauf</h2>
+                    <button class="clear-btn" onclick="clearHistory()" title="Verlauf löschen">✕</button>
+                </div>
+                <ul id="history-log" class="history-list">
+                    <li class="history-empty">Noch keine Berechnungen</li>
+                </ul>
+            </div>
+
+            <div class="panel notes-panel" id="notes">
+                <div class="panel-header">
+                    <h2>Notizen</h2>
+                </div>
+                <textarea
+                    id="notepad"
+                    placeholder="Schreibe hier deine Notizen…"
+                ></textarea>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <a href="https://github.com/" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+        <a href="mailto:mail@example.com">E-Mail</a>
+        <span>© 2026 Gizem Güney</span>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -14,7 +14,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Rubik:wght@600;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
@@ -53,28 +60,43 @@
   </div>
 
   <header class="project-header">
-    <h2>1. Idee</h2>
-
-      <p>
-        Ich bin kein Einzelkind – ich habe das große Glück, einen großen Bruder zu haben:
-        <strong>Kerim Güney</strong>.
-        Zu ihm habe ich immer aufgeschaut und werde es auch immer tun.
-        Ich bin unglaublich stolz auf ihn, und unsere Geschwister-Dynamik war und ist etwas ganz Besonderes für mich.
-      </p>
-
-      <p>
-        Als ich meinen Bruder programmieren sah, wurde in mir schon mit
-        <strong>10 Jahren</strong> die Neugier geweckt, selbst einmal programmieren zu dürfen.
-        Mein Bruder bot mir damals die Möglichkeiten, mir das zu zeigen und beizubringen.
-        Zu diesem Zeitpunkt war mein Interesse jedoch noch nicht so stark ausgeprägt wie heute.
-      </p>
-
-      <p>
-        Die Seite wurde damals nicht vollständig ausgearbeitet oder weiterentwickelt.
-        Heute bin ich dennoch sehr froh, sie zeigen zu können, denn sie markiert
-        meinen ersten bewussten Berührungspunkt mit dem Programmieren
-        und hat einen besonderen Platz in meinen Erinnerungen.
-      </p>
+    <section class="brother-section">
+      <div class="brother-text">
+        <h2>1. Idee</h2>
+    
+        <p>
+          Ich bin kein Einzelkind – ich habe das große Glück, einen großen Bruder zu haben:
+          <strong>Kerim Güney</strong>.
+          Zu ihm habe ich immer aufgeschaut und werde es auch immer tun.
+          Ich bin unglaublich stolz auf ihn, und unsere Geschwister-Dynamik war und ist etwas ganz Besonderes für mich.
+        </p>
+    
+        <p>
+          Als ich meinen Bruder programmieren sah, wurde in mir schon mit
+          <strong>10 Jahren</strong> die Neugier geweckt, selbst einmal programmieren zu dürfen.
+          Mein Bruder bot mir damals die Möglichkeiten, mir das zu zeigen und beizubringen.
+          Zu diesem Zeitpunkt war mein Interesse jedoch noch nicht so stark ausgeprägt wie heute.
+        </p>
+    
+        <p>
+          Die Seite wurde damals nicht vollständig ausgearbeitet oder weiterentwickelt.
+          Heute bin ich dennoch sehr froh, sie zeigen zu können, denn sie markiert
+          meinen ersten bewussten Berührungspunkt mit dem Programmieren
+          und hat einen besonderen Platz in meinen Erinnerungen.
+        </p>
+      </div>
+    
+      <div class="brother-figure">
+        <img src="assets/kerim-pixel.png" alt="Pixel-Art von Kerim" class="brother-avatar">
+    
+        <div class="brother-note">
+          <span>Danke Abi</span>
+          <span class="heart">&lt;3</span>
+        </div>
+    
+        <div class="brother-note-line"></div>
+      </div>
+    </section>
 
 
       <h2>2. Herausforderung</h2>
@@ -115,7 +137,34 @@
     </div>
   </section>
 
-  <script src="script.js"></script>
-
+</main>
 
 </main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+
+    <p class="footer-name">© <span id="year"></span> Gizem Güney</p>
+
+    <div class="footer-links">
+      <a href="https://github.com/Riimiii" target="_blank" class="footer-icon">
+        <img src="assets/github.svg" alt="GitHub">
+      </a>
+
+      <a href="https://www.linkedin.com/in/gizem-g%C3%BCney-5b8613396/" target="_blank" class="footer-icon">
+        <img src="assets/linkedin.svg" alt="LinkedIn">
+      </a>
+    </div>
+
+  </div>
+</footer>
+
+<!-- Scroll-to-Top -->
+<button id="scrollTopBtn" class="scroll-top-btn" aria-label="Nach oben scrollen">
+  <span class="arrow-up"></span>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>

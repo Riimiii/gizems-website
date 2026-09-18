@@ -155,9 +155,23 @@ body.page-scrolled .projects-header h1 {
 /*     PROJEKT-DETAILSEITE       */
 /* ============================= */
 
-.project-detail {
-  max-width: 800px;
-  margin: auto;
+.project-detail-page p,
+.project-detail-page li {
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.project-detail-page h2 {
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+
+.project-detail-page .btn {
+  font-size: 1rem;
+}
+
+.brother-note {
+  font-size: 1.28rem;
 }
 
 .project-hero h1 {
@@ -241,4 +255,246 @@ body.page-scrolled .projects-header h1 {
   .project-card .thumb {
     height: 120px;
   }
+}
+/* ============================= */
+/*       SNAKE DETAIL PAGE        */
+/* ============================= */
+
+.snake-detail-page {
+  padding-bottom: 70px;
+}
+
+/* Oberer Snake-Bereich */
+.snake-hero-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+  align-items: center;
+  gap: 48px;
+  margin: 34px 0 80px;
+}
+
+/* Text links oben */
+.project-kicker {
+  margin-bottom: 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #b9788d;
+}
+
+.snake-detail-text h1 {
+  margin-bottom: 18px;
+  font-family: "Rubik", sans-serif;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.snake-detail-text h1::first-letter {
+  color: #c9869a;
+}
+
+.snake-detail-text p {
+  max-width: 680px;
+  margin-bottom: 24px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+/* Snake Vorschaukarte */
+.snake-preview-card {
+  width: 100%;
+  max-width: 330px;
+  justify-self: center;
+  padding: 18px;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 143, 196, 0.18), transparent 34%),
+    radial-gradient(circle at 80% 70%, rgba(147, 51, 234, 0.22), transparent 38%),
+    #16141d;
+  border: 1px solid rgba(185, 120, 141, 0.18);
+  box-shadow: 0 18px 40px rgba(70, 45, 55, 0.14);
+}
+
+.snake-preview-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.snake-preview-score {
+  font-size: 1.4rem;
+  letter-spacing: 0;
+  color: #ff8fc4;
+}
+
+.snake-preview-board {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #0a0a10;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.snake-piece,
+.snake-dot {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+}
+
+.snake-piece.head {
+  left: 52%;
+  top: 44%;
+  background: #d4b8ff;
+  box-shadow: 0 0 16px rgba(192, 132, 252, 0.55);
+}
+
+.snake-piece.body {
+  background: #9333ea;
+  opacity: 0.85;
+}
+
+.snake-piece.b1 {
+  left: 45%;
+  top: 44%;
+}
+
+.snake-piece.b2 {
+  left: 38%;
+  top: 44%;
+  opacity: 0.65;
+}
+
+.snake-piece.b3 {
+  left: 31%;
+  top: 44%;
+  opacity: 0.45;
+}
+
+.snake-dot.apple {
+  left: 68%;
+  top: 28%;
+  border-radius: 50%;
+  background: #ff8fc4;
+  box-shadow: 0 0 18px rgba(255, 143, 196, 0.7);
+}
+
+.snake-preview-caption {
+  margin-top: 12px;
+  text-align: center;
+  font-family: "Caveat", cursive;
+  font-size: 1.35rem;
+  color: #c9869a;
+  transform: rotate(-3deg);
+}
+
+/* Inhaltsabschnitte wie bei Website mit 10 */
+.snake-detail-page .project-info-section {
+  margin: 0 0 56px;
+}
+
+.snake-detail-page .project-info-section h2 {
+  margin-bottom: 18px;
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+
+.snake-detail-page .project-info-section p,
+.snake-detail-page .project-info-section li {
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.snake-detail-page .project-info-section p {
+  margin-bottom: 24px;
+}
+
+.snake-detail-page .project-info-section p:last-child {
+  margin-bottom: 0;
+}
+
+.snake-detail-page .project-info-section ul {
+  margin-top: 16px;
+  padding-left: 22px;
+}
+
+.snake-detail-page .project-info-section li {
+  margin-bottom: 12px;
+}
+
+/* Buttons */
+.snake-detail-page .project-links {
+  margin-top: 36px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Technologien */
+.snake-detail-page .project-tech {
+  margin-top: 48px;
+}
+
+.snake-detail-page .project-tech h2 {
+  margin-bottom: 18px;
+}
+
+/* Responsive */
+@media (max-width: 850px) {
+  .snake-hero-detail {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    margin: 30px 0 70px;
+  }
+
+  .snake-preview-card {
+    max-width: 300px;
+  }
+
+  .snake-detail-page .project-info-section {
+    margin-bottom: 56px;
+  }
+}
+
+@media (max-width: 560px) {
+  .snake-preview-card {
+    max-width: 260px;
+  }
+
+  .snake-detail-text p,
+  .snake-detail-page .project-info-section p,
+  .snake-detail-page .project-info-section li {
+    font-size: 1rem;
+  }
+
+  .snake-detail-page .project-info-section {
+    margin-bottom: 48px;
+  }
+}
+
+.full-width {
+  max-width: 850px;
+}
+
+.project-tutorial-link {
+  color: #b9788d;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.project-tutorial-link:hover {
+  text-decoration: underline;
 }

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pixel Escape – Gizem Güney</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Rubik:wght@600;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <script>
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="nav">
+
+    <a class="brand personal" href="index.html" aria-label="Startseite">
+      <div class="name">
+        <span class="big-g">G</span>
+        <div class="name-text">
+          <span class="first">Gizem</span>
+          <span class="last">Güney</span>
+        </div>
+      </div>
+    </a>
+
+    <nav class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Theme wechseln">
+        <img src="assets/sun.svg" class="icon-sun" alt="Lightmode Icon">
+        <img src="assets/moon.svg" class="icon-moon" alt="Darkmode Icon">
+      </button>
+
+      <a href="index.html#ueber-mich">Über mich</a>
+      <a href="projects.html">Projekte</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+
+  </div>
+</header>
+
+<main class="container project-detail-page">
+
+  <div class="back-nav">
+    <a href="projects.html" class="back-link-clean">
+      <span class="arrow">←</span>
+      Zurück zu Projekten
+    </a>
+  </div>
+
+  <section class="snake-hero-detail reveal-on-scroll">
+    <div class="snake-detail-text full-width">
+
+      <p class="project-kicker">Godot Game</p>
+
+      <h1>Pixel Escape</h1>
+
+      <p>
+        Pixel Escape ist mein erstes Projekt mit der Godot Engine.
+        Das Spiel entstand anhand des Tutorials von
+        <a href="https://www.youtube.com/watch?v=LOhfqjmasi0"
+           class="project-tutorial-link"
+           target="_blank"
+           rel="noopener noreferrer">
+          Clear Code
+        </a>,
+        das ich Schritt für Schritt nachgebaut habe, um die Grundlagen der
+        Spieleentwicklung, GDScript und den Aufbau von Godot besser zu verstehen.
+      </p>
+
+      <div class="project-links">
+        <a href="#" class="btn primary" target="_blank">
+          Live Demo spielen
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=LOhfqjmasi0"
+           class="btn secondary"
+           target="_blank"
+           rel="noopener noreferrer">
+          Zum Tutorial
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="project-info-section reveal-on-scroll">
+    <h2>1. Idee</h2>
+
+    <p>
+      Die Idee hinter Pixel Escape war es, mein erstes eigenes Spielprojekt
+      mit Godot umzusetzen und dabei die wichtigsten Grundlagen einer Game Engine
+      kennenzulernen.
+    </p>
+
+    <p>
+      Da ich noch am Anfang stehe, habe ich mich bewusst an einem Tutorial
+      orientiert. So konnte ich verstehen, wie ein 2D-Spiel aufgebaut wird und
+      wie einzelne Elemente wie Spieler, Gegner, Bewegung und Kollisionen
+      zusammenarbeiten.
+    </p>
+  </section>
+
+  <section class="project-info-section reveal-on-scroll">
+    <h2>2. Herausforderung</h2>
+
+    <p>
+      Die größte Herausforderung war, die einzelnen Schritte aus dem Tutorial
+      nicht nur nachzumachen, sondern wirklich zu verstehen, warum sie funktionieren.
+    </p>
+
+    <p>
+      Besonders neu für mich waren der Aufbau mit Szenen und Nodes, die Arbeit
+      mit GDScript, Kollisionen, Signalen und das Zusammenspiel verschiedener
+      Spielobjekte innerhalb der Godot Engine.
+    </p>
+  </section>
+
+  <section class="project-info-section reveal-on-scroll">
+    <h2>3. Umsetzung</h2>
+
+    <ul>
+      <li>Umsetzung mit der Godot Engine</li>
+      <li>Programmierung der Spiellogik mit GDScript</li>
+      <li>Arbeit mit Szenen, Nodes und Signalen</li>
+      <li>Bewegung und Kollisionen für Spielfiguren und Objekte</li>
+      <li>Erste Erfahrungen mit Levelaufbau und Spielzuständen</li>
+      <li>Nachbau eines Beginner-Tutorials zur Einarbeitung in Godot</li>
+    </ul>
+  </section>
+
+  <section class="project-tech reveal-on-scroll">
+    <h2>Technologien</h2>
+
+    <div class="tag-list">
+      <span class="tag">Godot</span>
+      <span class="tag">GDScript</span>
+      <span class="tag">2D Game</span>
+      <span class="tag">Game Development</span>
+      <span class="tag">Beginner Tutorial</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+
+    <p class="footer-name">© <span id="year"></span> Gizem Güney</p>
+
+    <div class="footer-links">
+      <a href="https://github.com/Riimiii" target="_blank" class="footer-icon">
+        <img src="assets/github.svg" alt="GitHub">
+      </a>
+
+      <a href="https://www.linkedin.com/in/gizem-g%C3%BCney-5b8613396/" target="_blank" class="footer-icon">
+        <img src="assets/linkedin.svg" alt="LinkedIn">
+      </a>
+    </div>
+
+  </div>
+</footer>
+
+<button id="scrollTopBtn" class="scroll-top-btn" aria-label="Nach oben scrollen">
+  <span class="arrow-up"></span>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>

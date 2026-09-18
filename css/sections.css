@@ -287,3 +287,91 @@ html:not(.dark) .footer-icon img:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   transition: all 0.35s ease;
 }
+
+/* ============================= */
+/*       BROTHER / KERIM NOTE     */
+/* ============================= */
+
+.brother-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  margin: 34px 0 56px;
+  flex-wrap: wrap;
+}
+
+.brother-text {
+  flex: 1 1 540px;
+}
+
+.brother-figure {
+  flex: 0 1 220px;
+  text-align: center;
+  align-self: center;
+  transform: translateY(-12px);
+}
+
+.brother-avatar {
+  width: 188px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 6px;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 7px 13px rgba(70, 45, 55, 0.13));
+}
+
+.brother-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 2px;
+  font-family: "Caveat", cursive;
+  font-size: 1.28rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #b9788d;
+  transform: rotate(-4deg);
+  opacity: 0.92;
+}
+
+.brother-note .heart {
+  font-size: 0.95rem;
+  color: #c9869a;
+  transform: translateY(-1px) rotate(3deg);
+  opacity: 0.95;
+}
+
+.brother-note-line {
+  width: 76px;
+  height: 1px;
+  margin: 7px auto 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(185, 120, 141, 0.45),
+    transparent
+  );
+  transform: rotate(-4deg);
+}
+
+@media (max-width: 768px) {
+  .brother-section {
+    gap: 24px;
+  }
+
+  .brother-figure {
+    margin: 0 auto;
+    transform: translateY(0);
+  }
+
+  .brother-avatar {
+    width: 165px;
+  }
+
+  .brother-note {
+    font-size: 1.18rem;
+  }
+}

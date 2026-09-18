@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Snake Game – Gizem Güney</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Rubik:wght@600;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Dark Mode sofort setzen -->
+  <script>
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="nav">
+
+    <a class="brand personal" href="index.html" aria-label="Startseite">
+      <div class="name">
+        <span class="big-g">G</span>
+        <div class="name-text">
+          <span class="first">Gizem</span>
+          <span class="last">Güney</span>
+        </div>
+      </div>
+    </a>
+
+    <nav class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Theme wechseln">
+        <img src="assets/sun.svg" class="icon-sun" alt="Lightmode Icon">
+        <img src="assets/moon.svg" class="icon-moon" alt="Darkmode Icon">
+      </button>
+
+      <a href="index.html#ueber-mich">Über mich</a>
+      <a href="projects.html">Projekte</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+
+  </div>
+</header>
+
+<main class="container project-detail-page snake-detail-page">
+
+  <div class="back-nav">
+    <a href="projects.html" class="back-link-clean">
+      <span class="arrow">←</span>
+      Zurück zu Projekten
+    </a>
+  </div>
+
+  <section class="snake-hero-detail reveal-on-scroll">
+    <div class="snake-detail-text">
+      <p class="project-kicker">JavaScript Game</p>
+
+      <h1>Slay the Snake</h1>
+
+      <p>
+        Dieses Projekt ist ein kleines Browser-Spiel, bei dem ich klassische
+        Snake-Mechaniken mit einem dunklen, modernen Design kombiniert habe.
+        Ziel war es, Spiellogik, Tastatursteuerung, Canvas-Zeichnung und
+        Zustände wie Start, Game Over und Highscore besser zu verstehen.
+      </p>
+
+      <div class="project-links">
+        <a href="snake-game/index.html" class="btn primary" target="_blank">
+          Live Demo spielen
+        </a>
+        <a href="#" class="btn secondary">
+          Source Code
+        </a>
+      </div>
+    </div>
+
+    <div class="snake-preview-card">
+      <div class="snake-preview-top">
+        <span>Score</span>
+        <span class="snake-preview-score">12</span>
+        <span>Best</span>
+      </div>
+
+      <div class="snake-preview-board">
+        <div class="snake-dot apple"></div>
+        <div class="snake-piece head"></div>
+        <div class="snake-piece body b1"></div>
+        <div class="snake-piece body b2"></div>
+        <div class="snake-piece body b3"></div>
+      </div>
+
+      <p class="snake-preview-caption">Night Edition</p>
+    </div>
+  </section>
+
+  <section class="project-info-section reveal-on-scroll">
+    <h2>1. Idee</h2>
+
+    <p>
+      Ich wollte ein Spiel entwickeln, das einfach zu verstehen ist, aber trotzdem
+      echte Programmlogik braucht. Snake eignet sich dafür sehr gut, weil man
+      Bewegung, Kollisionen, Punkte, Wachstum und Spielzustände Schritt für Schritt
+      umsetzen kann.
+    </p>
+
+    <p>
+      Gleichzeitig wollte ich dem Spiel einen eigenen Stil geben. Deshalb ist aus
+      einem klassischen Snake-Spiel die dunkle Variante <strong>„Slay the Snake – Night Edition“</strong>
+      geworden.
+    </p>
+  </section>
+
+  <section class="project-info-section reveal-on-scroll">
+    <h2>2. Herausforderung</h2>
+
+    <p>
+      Die größte Herausforderung war die Spiellogik: Die Schlange muss sich flüssig
+      bewegen, darf nicht direkt rückwärts laufen, muss beim Apfel wachsen und bei
+      Kollisionen korrekt verlieren.
+    </p>
+
+    <p>
+      Außerdem musste ich darauf achten, dass der Apfel nicht auf der Schlange
+      erscheint und dass der Highscore im Browser gespeichert bleibt.
+    </p>
+  </section>
+
+  <section class="project-info-section reveal-on-scroll">
+    <h2>3. Umsetzung</h2>
+
+    <ul>
+      <li>Umsetzung mit HTML, CSS und JavaScript</li>
+      <li>Zeichnen des Spiels über ein Canvas-Element</li>
+      <li>Steuerung über Pfeiltasten und Touch/Swipe</li>
+      <li>Score- und Highscore-System mit localStorage</li>
+      <li>Partikel-Effekt beim Einsammeln des Apfels</li>
+      <li>Startscreen, Countdown und Game-Over-Anzeige</li>
+    </ul>
+  </section>
+
+  <section class="project-tech reveal-on-scroll">
+    <h2>Technologien</h2>
+
+    <div class="tag-list">
+      <span class="tag">HTML</span>
+      <span class="tag">CSS</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">Canvas</span>
+      <span class="tag">Game Logic</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+
+    <p class="footer-name">© <span id="year"></span> Gizem Güney</p>
+
+    <div class="footer-links">
+      <a href="https://github.com/Riimiii" target="_blank" class="footer-icon">
+        <img src="assets/github.svg" alt="GitHub">
+      </a>
+
+      <a href="https://www.linkedin.com/in/gizem-g%C3%BCney-5b8613396/" target="_blank" class="footer-icon">
+        <img src="assets/linkedin.svg" alt="LinkedIn">
+      </a>
+    </div>
+
+  </div>
+</footer>
+
+<button id="scrollTopBtn" class="scroll-top-btn" aria-label="Nach oben scrollen">
+  <span class="arrow-up"></span>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
